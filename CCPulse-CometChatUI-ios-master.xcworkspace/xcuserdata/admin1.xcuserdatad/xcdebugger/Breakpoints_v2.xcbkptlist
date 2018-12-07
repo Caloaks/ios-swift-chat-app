@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CCPulse-CometChatUI-ios-master/Controller/CCContactVC/OneOnOneListViewController.swift"
+            timestampString = "565802480.895189"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "fetchUsers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CCPulse-CometChatUI-ios-master/Controller/FetchData.swift"
+            timestampString = "565802480.895278"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "fetchUsers(completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CCPulse_CometChatUI_ios_master.fetchData_.fetchUsers(complitionHandler: (Swift.Optional&lt;Swift.Array&lt;CometChatPulseSDK.User&gt;&gt;, Swift.Optional&lt;CometChatPulseSDK.CCException&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CCPulse-CometChatUI-ios-master"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin1/Downloads/CometChat-V8/CCPulse-CometChatUI-ios-master/CCPulse-CometChatUI-ios-master/Controller/FetchData.swift"
+                  timestampString = "565714039.270879"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "232">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;CometChatPulseSDK.User&gt;&gt;, Swift.Optional&lt;CometChatPulseSDK.CCException&gt;) -&gt; () in CCPulse_CometChatUI_ios_master.fetchData_.fetchUsers(complitionHandler: (Swift.Optional&lt;Swift.Array&lt;CometChatPulseSDK.User&gt;&gt;, Swift.Optional&lt;CometChatPulseSDK.CCException&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CCPulse-CometChatUI-ios-master"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin1/Downloads/CometChat-V8/CCPulse-CometChatUI-ios-master/CCPulse-CometChatUI-ios-master/Controller/FetchData.swift"
+                  timestampString = "565714039.274155"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
