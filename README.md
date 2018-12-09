@@ -1,6 +1,5 @@
 # [iOS-swift-chat-app](https://www.cometchat.com) - Sample app which helps  to integrate CometChat pulse in you app.
 
-# iOS-swift-chat-app
 CometChat-Pulse iOS Demo app made using CometChat-Pulse iOS SDK is a fully functional messaging app capable of **OnetoOne** and **Group** messaging.OnetoOne and Group messaging allows you to send **text** and various **multimedia messages like audio,video,images,documents etc..**
 
 [![Platform](https://img.shields.io/badge/platform-iOS-orange.svg)](https://cocoapods.org/pods/CometChatPulseSDK)
@@ -78,7 +77,7 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
    
    
      
-  ![Studio Guide](https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/AuthenticationClass.png)                                      ![ApiKey]
+  ![Studio Guide](https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/AuthenticationClass.png)                                      
   
   
      
