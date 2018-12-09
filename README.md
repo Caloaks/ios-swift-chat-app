@@ -99,7 +99,7 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
    
    <img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/Contacts.gif"></br>                                                      
    
-<br></br>
+<br></br><br></br><br></br><br></br>
    
    
    
