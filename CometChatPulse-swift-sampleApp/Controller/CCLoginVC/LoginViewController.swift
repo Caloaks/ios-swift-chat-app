@@ -9,7 +9,7 @@
 import UIKit
 import CometChatPulseSDK
 
-class LoginViewController: UIViewController, CometChatDelegate ,UITextFieldDelegate {
+class LoginViewController: UIViewController, CometChatPulseDelegate ,UITextFieldDelegate {
     
     //Outlets Declaration
     @IBOutlet weak var bottomViewTop: NSLayoutConstraint!
@@ -53,7 +53,7 @@ class LoginViewController: UIViewController, CometChatDelegate ,UITextFieldDeleg
     
     @IBAction func login(_ sender: Any) {
         
-        CometChat.login(withUid: Authentication.UID, apiKey: Authentication.API_KEY, onSuccess: { (current_user) in
+        CometChat.login(withUid: userName.text!, apiKey: Authentication.API_KEY, onSuccess: { (current_user) in
             print("login sucess:",current_user)
             //UIButton State Change
             self.loginButton.setTitle("Login Sucessful", for: .normal)

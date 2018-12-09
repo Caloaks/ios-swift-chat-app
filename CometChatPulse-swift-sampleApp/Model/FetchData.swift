@@ -21,7 +21,7 @@ class fetchData_ {
     
     func fetchUsers(completionHandler:@escaping userResponse) {
         
-        userRequest = UsersRequest.UsersRequestBuilder(limit: 10).build()
+        userRequest = UsersRequest.UsersRequestBuilder(limit: 60).build()
         
         userRequest.fetchNext { (users, error) in
             

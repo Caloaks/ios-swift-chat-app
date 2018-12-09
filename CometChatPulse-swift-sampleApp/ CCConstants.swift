@@ -1,4 +1,4 @@
-//
+    //
 //   CCConstants.swift
 //  CCPulse-CometChatUI-ios-master
 //
@@ -10,9 +10,9 @@ import Foundation
 
 class Authentication {
     
-    static let APP_ID = "YOUR_APP_ID"       // Enter yout APP_ID
-    static let API_KEY = "YOUR_API_KEY"     // Enter yout API_KEY
-    static let UID = "YOUR_USER_ID"         // Enter yout UID
+    static let APP_ID =  "XXXXXXXXXX"              // Enter your APP_ID
+    static let API_KEY = "XXXXXXXXXX"              // Enter your API_KEY
+
     
 }
 
@@ -29,3 +29,13 @@ class UIAppearance{
     static let NAVIGATION_BAR_BUTTON_TINT_COLOR = "FFFFFF"
     static let TABLEVIEW_CORNER_RADIUS = 15.0
 }
+    
+    class UserProfileCell {
+        
+    static let AUDIO_CALL_CELL = 0
+    static let VIDEO_CALL_CELL = 1
+        
+    static let RIGHT_IMAGE_TINT_COLOR = "007AFF"
+        
+        
+    }

@@ -16,6 +16,9 @@ class OneOnOneTableViewCell: UITableViewCell {
     @IBOutlet weak var buddyStatus: UILabel!
     @IBOutlet weak var buddyStatusIcon: UIImageView!
     
+    
+    //variable Declarations
+    
     //This methods getting called when the cell is loaded in the TableView
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -47,8 +47,9 @@ class CCTabBarController: UITabBarController,UITabBarControllerDelegate {
         tab3.tabBarItem = groupIcon
 
         
-        let controllers = [tab1,tab2,tab3] as [Any]  //array of the root view controllers displayed by the tab bar interface
+        let controllers = [tab2,tab3] as [Any]  //array of the root view controllers displayed by the tab bar interface
         self.viewControllers = controllers as? [UIViewController]
+       // tabBarController?.selectedIndex = 1
     }
     
     //Delegate methods

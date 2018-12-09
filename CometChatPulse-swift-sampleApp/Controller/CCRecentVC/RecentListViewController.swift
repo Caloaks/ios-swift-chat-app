@@ -73,11 +73,6 @@ class RecentListViewController: UIViewController ,UISearchControllerDelegate {
     
     @IBAction func announcementPressed(_ sender: Any) {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let CCWebviewController = storyboard.instantiateViewController(withIdentifier: "ccwebviewController") as! CCWebviewController
-        navigationController?.pushViewController(CCWebviewController, animated: false)
-        CCWebviewController.title = "Announcements"
-        CCWebviewController.hidesBottomBarWhenPushed = true
         
     }
     

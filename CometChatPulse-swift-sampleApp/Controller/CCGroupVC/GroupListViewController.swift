@@ -9,7 +9,7 @@
 import UIKit
 import CometChatPulseSDK
 
-class GroupListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
+class GroupListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource, UISearchBarDelegate{
 
     //Outlets Declarations
     @IBOutlet weak var groupTableView: UITableView!
@@ -21,25 +21,51 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     var nameArray:[String]!
     var imageArray:[UIImage]!
     var statusArray:[String]!
+    var groupArray:Array<Group>!
     var joinedChatRoomList:Array<Group>!
     var othersChatRoomList:Array<Group>!
     var groupRequest:GroupsRequest!
+    var searchController:UISearchController!
     
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Function Calling
-        self.fetchGroupList()
+        //self.fetchGroupList()
+        
+        //Memory Allocation
+        joinedChatRoomList = [Group]()
+        othersChatRoomList = [Group]()
+        
+        //Triggering Notifications
+        DispatchQueue.global().async {
+            NotificationCenter.default.addObserver(self, selector: #selector(self.fetchGroupListFrom(_:)), name: NSNotification.Name(rawValue: "com.groupsData"), object: nil)
+        }
+        groupTableView.reloadData()
+        
         
         //Assigning Delegates
         groupTableView.delegate = self
         groupTableView.dataSource = self
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
+        
+        DispatchQueue.global().async {
+            NotificationCenter.default.addObserver(self, selector: #selector(self.fetchGroupListFrom(_:)), name: NSNotification.Name(rawValue: "com.groupsData"), object: nil)
+        }
         //Calling Function
         self.handleGroupListVCAppearance()
+    }
+    
+    @objc func fetchGroupListFrom(_ notification: NSNotification) {
+        
+        print("CallingfetchGroupListFrom \(notification)")
+       // groupArray = (notification.userInfo!["groupsData"] as! Array<group>)
+        self.groupTableView.reloadData()
     }
     
     func fetchGroupList(){
@@ -125,13 +151,45 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         // NavigationBar Buttons Appearance
         
-        notifyButton.setImage(UIImage(named: "bell.png"), for: .normal)
+       // notifyButton.setImage(UIImage(named: "bell.png"), for: .normal)
         createButton.setImage(UIImage(named: "new.png"), for: .normal)
         moreButton.setImage(UIImage(named: "more_vertical.png"), for: .normal)
         
-        notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        //notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         createButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         moreButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        
+        // SearchBar Apperance
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        searchController.searchBar.tintColor = UIColor.white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
+        
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        
+        let SearchImageView = UIImageView.init()
+        let SearchImage = UIImage(named: "icons8-search-30")!.withRenderingMode(.alwaysTemplate)
+        SearchImageView.image = SearchImage
+        SearchImageView.tintColor = UIColor.init(white: 1, alpha: 0.5)
+        
+        searchController.searchBar.setImage(SearchImageView.image, for: UISearchBarIcon.search, state: .normal)
+        if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.white
+            if let backgroundview = textfield.subviews.first{
+                
+                // Background color
+                backgroundview.backgroundColor = UIColor.init(hexFromString: "62adff")
+                // Rounded corner
+                backgroundview.layer.cornerRadius = 10;
+                backgroundview.clipsToBounds = true;
+            }
+        }
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            
+        }
         
     }
     
@@ -175,7 +233,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     //titleForHeaderInSection indexPath -->
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        if(section==0) {
+        if(section == 0) {
             return "JOINED GROUPS"
         }
         else {
@@ -239,11 +297,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     //Announcement Button Pressed
     @IBAction func announcementPressed(_ sender: Any) {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let CCWebviewController = storyboard.instantiateViewController(withIdentifier: "ccwebviewController") as! CCWebviewController
-        navigationController?.pushViewController(CCWebviewController, animated: false)
-        CCWebviewController.title = "Announcements"
-        CCWebviewController.hidesBottomBarWhenPushed = true
+      
         
     }
     
@@ -252,7 +306,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let CCWebviewController = storyboard.instantiateViewController(withIdentifier: "moreSettingsViewController") as! MoreSettingsViewController
-        navigationController?.pushViewController(CCWebviewController, animated: false)
+        navigationController?.pushViewController(CCWebviewController, animated: true)
         CCWebviewController.title = "More"
         CCWebviewController.hidesBottomBarWhenPushed = true
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 import CometChatPulseSDK
-class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , CometChatDelegate {
+class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , CometChatPulseDelegate, UISearchBarDelegate{
     
     //Outlets Declarations
     @IBOutlet weak var oneOneOneTableView: UITableView!
@@ -18,18 +18,31 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
 
     //Variable Declarations
     private var _blurView: UIVisualEffectView?
+    var searchController:UISearchController!
     var nameArray:[String]!
     var imageArray:[UIImage]!
     var statusArray:[String]!
-    var getUserArray:Array<User>!
+    var getUserArray:[User]!
     var userRequest:UsersRequest!
     private let limit = 10
     
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Memory Allocation
+        getUserArray = [User]()
+        
+        
+         //Triggering Notifications
+        DispatchQueue.global().async {
+             NotificationCenter.default.addObserver(self, selector: #selector(self.fetchUsers(_:)), name: NSNotification.Name(rawValue: "com.usersData"), object: nil)
+        }
+        oneOneOneTableView.reloadData()
+       
+       
+        
         //Function Calling
-        self.fetchUsers()
         
         //Assigning Delegates
         oneOneOneTableView.delegate = self
@@ -38,45 +51,22 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //Triggering Notifications
+        DispatchQueue.global().async {
+            NotificationCenter.default.addObserver(self, selector: #selector(self.fetchUsers(_:)), name: NSNotification.Name(rawValue: "com.usersData"), object: nil)
+        }
         //Function Calling
         self.handleContactListVCAppearance()
     }
     
     
-    func fetchUsers(){
-    
-    // This Method fetch the users from the Server.
+    @objc func fetchUsers(_ notification: NSNotification) {
         
-        getUserArray = Array<User>()
-        
-        
-        fetchData_().fetchUsers { (users, error) in
-
-            guard let userReceived = users else
-            {
-                print(error!.errordescription)
-                return
-            }
-            for user in users! {
-                self.getUserArray.append(user)
-                print("users in array: \(user)")
-                print("users  array: \(String(describing: users))")
-            }
-            DispatchQueue.main.async(execute: { self.oneOneOneTableView.reloadData()
-            })
-        }
-
-//        userRequest = UsersRequest.UsersRequestBuilder(limit: limit).build()
-//
-//        userRequest.fetchNext { (userArray, error) in
-//            for newUser:User in userArray!{
-//                self.getUserArray.append(newUser)
-//
-//            }
-//            DispatchQueue.main.async(execute: { self.oneOneOneTableView.reloadData()
-//            })
-//        }
+        print("CallingFetchUsers")
+        getUserArray = (notification.userInfo!["usersData"] as! Array<User>)
+        self.oneOneOneTableView.reloadData()
     }
+    
     
     //This method handles the UI customization for ContactListVC
     func  handleContactListVCAppearance(){
@@ -86,7 +76,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         
         //TableView Appearance
         self.oneOneOneTableView.cornerRadius = CGFloat(UIAppearance.TABLEVIEW_CORNER_RADIUS)
-        
+        oneOneOneTableView.tableFooterView = UIView(frame: .zero)
         
         // NavigationBar Appearance
         navigationItem.title = "Contacts"
@@ -107,13 +97,46 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         }
         
         // NavigationBar Buttons Appearance
-        notifyButton.setImage(UIImage(named: "bell.png"), for: .normal)
+       // notifyButton.setImage(UIImage(named: "bell.png"), for: .normal)
         createButton.setImage(UIImage(named: "new.png"), for: .normal)
         moreButton.setImage(UIImage(named: "more_vertical.png"), for: .normal)
         
-        notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+       // notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         createButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         moreButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        
+        
+        // SearchBar Apperance
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        searchController.searchBar.tintColor = UIColor.white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
+        
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        
+        let SearchImageView = UIImageView.init()
+        let SearchImage = UIImage(named: "icons8-search-30")!.withRenderingMode(.alwaysTemplate)
+        SearchImageView.image = SearchImage
+        SearchImageView.tintColor = UIColor.init(white: 1, alpha: 0.5)
+        
+        searchController.searchBar.setImage(SearchImageView.image, for: UISearchBarIcon.search, state: .normal)
+        if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.white
+            if let backgroundview = textfield.subviews.first{
+                
+                // Background color
+                backgroundview.backgroundColor = UIColor.init(hexFromString: "62adff")
+                // Rounded corner
+                backgroundview.layer.cornerRadius = 10;
+                backgroundview.clipsToBounds = true;
+            }
+        }
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+           
+        }
         
     }
     
@@ -123,6 +146,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     //numberOfRowsInSection:
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return getUserArray.count
+       // return 0
     }
     
     //cellForRowAt indexPath :
@@ -149,34 +173,55 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         }
         
         // User Avtar :
-        let buddyURL:String = buddyData.avatar ?? "hello"
+        let buddyURL:String = buddyData.avatar ?? ""
+        if(buddyURL == ""){
+         cell.buddyAvtar.image = UIImage(named: "default_user.jpg")
+        }else{
         cell.buddyAvtar.imageFromURL(urlString:buddyURL)
+        }
         
+        print("urls are : \(buddyURL)")
         return cell
     }
     
     //willDisplaycell
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        if(indexPath.row == getUserArray.count - 5){
-            
-            
-//            userRequest.fetchNext { (userArray, error) in
-//                for newUser:User in userArray!{
-//                    self.getUserArray.append(newUser)
-//                }
-//                DispatchQueue.main.async(execute: {
-//                    self.oneOneOneTableView.reloadData()
-//                })
-//            }
+        if(indexPath.row == getUserArray.count/2){
+
+            fetchData_().fetchUsers { (users, error) in
+
+                guard users != nil else
+                {
+                    print(error!.errordescription)
+                    return
+                }
+                for user in users! {
+                    self.getUserArray.append(user)
+                    print("getUserArray:\(user)")
+                    print("getUserArray: \(String(describing: users))")
+                }
+                self.oneOneOneTableView.reloadData()
+            }
         }
     }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+    }
+    
+    
     
     //didSelectRowAt indexPath
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
-        performSegue(withIdentifier: "oneOnOneChatViewController", sender: self)
+        let selectedCell:OneOnOneTableViewCell = tableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
+        oneOnOneChatViewController.buddyStatusString = selectedCell.buddyStatus.text
+        oneOnOneChatViewController.buddyAvtar = selectedCell.buddyAvtar.image
+        oneOnOneChatViewController.buddyNameString = selectedCell.buddyName.text
+        navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
     }
     
      //heightForRowAt indexPath
@@ -228,18 +273,14 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     
     //announcement button Pressed
     @IBAction func announcementPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let CCWebviewController = storyboard.instantiateViewController(withIdentifier: "ccwebviewController") as! CCWebviewController
-        navigationController?.pushViewController(CCWebviewController, animated: false)
-        CCWebviewController.title = "Announcements"
-        CCWebviewController.hidesBottomBarWhenPushed = true
+      
     }
     
     //More button Pressed
     @IBAction func morePressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let CCWebviewController = storyboard.instantiateViewController(withIdentifier: "moreSettingsViewController") as! MoreSettingsViewController
-        navigationController?.pushViewController(CCWebviewController, animated: false)
+        navigationController?.pushViewController(CCWebviewController, animated: true)
         CCWebviewController.title = "More"
         CCWebviewController.hidesBottomBarWhenPushed = true
     }

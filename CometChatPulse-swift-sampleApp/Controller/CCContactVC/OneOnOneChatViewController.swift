@@ -13,6 +13,9 @@ class OneOnOneChatViewController: UIViewController {
     //Outlets Declarations
    
     // Variable Declarations
+    var buddyNameString:String!
+    var buddyStatusString:String!
+    //var buddyAvtar:String!
     var buddyAvtar:UIImage!
     var buddyName:UILabel!
     var buddyStatus:UILabel!
@@ -21,6 +24,7 @@ class OneOnOneChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("buddyNameis: \(String(describing: buddyNameString))")
     //Function Calling
         self.handleOneOnOneChatVCApperance()
        
@@ -55,7 +59,7 @@ class OneOnOneChatViewController: UIViewController {
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
         
         //BuddyAvtar Apperance
-        buddyAvtar = UIImage(named: "ic_person.png")
+        //buddyAvtar = UIImage(named: "ic_person.png")
         let containView = UIView(frame: CGRect(x: -10 , y: 0, width: 38, height: 38))
         containView.backgroundColor = UIColor.white
         containView.layer.cornerRadius = 19
@@ -76,17 +80,55 @@ class OneOnOneChatViewController: UIViewController {
         buddyName = UILabel(frame: CGRect(x:0,y: 3,width: 200,height: 21))
         buddyName.textColor = UIColor.white
         buddyName.textAlignment = NSTextAlignment.left
-        buddyName.text = "Persone 1"
+        buddyName.text = buddyNameString
         buddyName.font = UIFont(name: "AvenirNext-Medium", size: 18)
         titleView.addSubview(buddyName)
         
         buddyStatus = UILabel(frame: CGRect(x:0,y: titleView.frame.origin.y + 22,width: 200,height: 21))
         buddyStatus.textColor = UIColor.white
         buddyStatus.textAlignment = NSTextAlignment.left
-        buddyStatus.text = "Offline"
+        buddyStatus.text = buddyStatusString
         buddyStatus.font = UIFont(name: "AvenirNext-Medium", size: 12)
         titleView.addSubview(buddyStatus)
         
+        
+        // More Actions:
+        let tapOnProfileAvtar = UITapGestureRecognizer(target: self, action: #selector(UserAvtarClicked(tapGestureRecognizer:)))
+        imageview.isUserInteractionEnabled = true
+        imageview.addGestureRecognizer(tapOnProfileAvtar)
+        
+        
+        let tapOnTitleView = UITapGestureRecognizer(target: self, action: #selector(TitleViewClicked(tapGestureRecognizer:)))
+        titleView.isUserInteractionEnabled = true
+        titleView.addGestureRecognizer(tapOnTitleView)
+        
+    }
+    
+    @objc func UserAvtarClicked(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileAvtarViewController = storyboard.instantiateViewController(withIdentifier: "ccprofileAvtarViewController") as! CCprofileAvtarViewController
+        navigationController?.pushViewController(profileAvtarViewController, animated: true)
+        profileAvtarViewController.title = buddyNameString
+        profileAvtarViewController.profileAvtar = buddyAvtar
+        profileAvtarViewController.hidesBottomBarWhenPushed = true
+    }
+    
+    
+    @objc func TitleViewClicked(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedView = tapGestureRecognizer.view as! UIView
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let UserProfileViewController = storyboard.instantiateViewController(withIdentifier: "userProfileViewController") as! UserProfileViewController
+        navigationController?.pushViewController(UserProfileViewController, animated: true)
+        UserProfileViewController.title = "View Profile"
+        UserProfileViewController.getUserProfileAvtar = buddyAvtar
+        UserProfileViewController.getUserName = buddyName.text
+        UserProfileViewController.getUserStatus = buddyStatus.text
+        UserProfileViewController.hidesBottomBarWhenPushed = true
     }
     
 

@@ -1,5 +1,5 @@
 //
-//  CCWebviewController.swift
+//  CCprofileAvtarViewController.swift
 //  CometChatUI
 //
 //  Created by Admin1 on 19/11/18.
@@ -8,12 +8,13 @@
 
 import UIKit
 
-class CCWebviewController: UIViewController {
+class CCprofileAvtarViewController: UIViewController {
 
     //Outlets Declarations
+    @IBOutlet weak var profileAvtarView: UIImageView!
     
     //Variable Declarations
-    
+    var profileAvtar:UIImage!
     //This method is called when controller has loaded its view into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +23,11 @@ class CCWebviewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         //Function Calling
-        self.handleCCWebVCAppearance()
+        self.handleCCProfileAvtarVCAppearance()
     }
 
     //This method handles the UI customization for WebVC
-    func  handleCCWebVCAppearance(){
+    func  handleCCProfileAvtarVCAppearance(){
         
         // ViewController Appearance
         self.hidesBottomBarWhenPushed = true
@@ -56,6 +57,8 @@ class CCWebviewController: UIViewController {
         backBTN.tintColor = UIColor.white
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
         
+        // Profile Avtar
+        profileAvtarView.image = profileAvtar
         
     }
 

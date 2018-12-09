@@ -84,10 +84,10 @@ class startUpViewController: UIViewController,CCBottomSlideDelegate, UITextField
         
     // This function deals with the handling of the animations and transitions  of view .
         swipeUpLbel.isHidden = true
-        activity.startAnimating()
+       activity.stopAnimating()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { // change 2 to desired number of seconds
-            self.activity.stopAnimating()
+        DispatchQueue.main.asyncAfter(deadline: .now() ) { // change 2 to desired number of seconds
+//            self.activity.stopAnimating()
             self.swipeUpLbel.isHidden = false
             //self.bottomView.shake()
             
