@@ -101,6 +101,12 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
    
 
    
+   
+   
+   
+   
+   
+   
 ## Contribute 
    
    
