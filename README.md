@@ -78,7 +78,7 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
    
    
      
-  ![Studio Guide](https://github.com/CometChat-Pulse/android-java-chat-app/blob/master/ScreenShots/Run%20guide.PNG)                                      ![ApiKey]
+  ![Studio Guide](https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/AuthenticationClass.png)                                      ![ApiKey]
   
   
      
