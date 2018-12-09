@@ -27,7 +27,6 @@ class LoginViewController: UIViewController, CometChatPulseDelegate ,UITextField
         super.viewDidLoad()
 
        //Funtion Calling
-        self.initialization()
         
         //Assigning Delegates
         userName.delegate = self
@@ -38,16 +37,6 @@ class LoginViewController: UIViewController, CometChatPulseDelegate ,UITextField
         
         //Funtion Calling
         self.handleTopViewDistance()
-    }
-    
-    func initialization(){
-        // init the Cometchat by using your app id
-        cometchat = CometChat(appId: Authentication.APP_ID) { (error) in
-            print("error is : \(error)")
-        }
-        
-        //Assigning Delegate
-        cometchat.delegate = self
     }
     
     
