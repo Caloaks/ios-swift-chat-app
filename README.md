@@ -87,17 +87,17 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
    
 ## ScreenShots
 
-<img align="left" width="370" height="662" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/splash.gif">
+<img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/splash.gif">
    
 
-   <img align="left" width="370" height="662" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/login.gif">
+   <img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/login.gif">
    
    
-   <img align="left" width="370" height="662" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/tapOnContact.gif">
+   <img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/tapOnContact.gif">
    
  
    
-   <img align="left" width="370" height="662" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/Contacts.gif"></br>                                                      
+   <img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/Contacts.gif"></br>                                                      
    
 
    
