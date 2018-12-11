@@ -1,4 +1,15 @@
-# [iOS-swift-chat-app](https://www.cometchat.com) - Sample app which helps  to integrate CometChat pulse in you app.
+<div style="width:100%">
+	<div style="width:50%; display:inline-block">
+		<h1> CometChatPulse </h1> 
+		<img align="left" width="150" height="150" alt="CometChat Pulse" src="https://github.com/CometChat-Pulse/javascript-chat-sdk/blob/master/CometChat%20Pulse%20Logo.png">		
+	</div>	
+</div>
+</br>
+</br>
+<h2> The Most Prominent Voice, Video and Text Chat App</h2>
+
+</div>
+<br>
 
 CometChat-Pulse iOS Demo app made using CometChat-Pulse iOS SDK is a fully functional messaging app capable of **OnetoOne** and **Group** messaging.OnetoOne and Group messaging allows you to send **text** and various **multimedia messages like audio,video,images,documents etc..**
 
