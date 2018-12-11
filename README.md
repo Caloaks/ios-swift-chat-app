@@ -83,7 +83,7 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
 
    You can Obtain your  *APP_ID* and *API_KEY* from [CometChat-Pulse Dashboard](https://app.cometchat.com/#/login)
    
-   For more information read [ios-chat-sdk](ios-chat-sdk) Documentation
+   For more information read [ios-chat-sdk](https://github.com/CometChat-Pulse/ios-chat-sdk) Documentation
        
    
    
