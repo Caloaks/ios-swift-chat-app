@@ -64,17 +64,12 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
    
    To Run to sample App you have to do the following changes by Adding **ApiKey** and **AppId**
           
-   - Open the Project in Android Mode in Android Studio 
+   - Open the Project in Xcode. 
           
-   - Go to Under CometChatPulse-swift-sampleApp -->  CCConstants.swift
-          
-   - Under `CCConstants.swift` file  go to `class` named `Authentication`
-          
-  -  modify *APP_ID* and *API_KEY* with your own **ApiKey** and **AppId**
+   - Go to Under CometChatPulse-swift-sampleApp -->  Info.plist
+                  
+   -  modify *APP_ID* and *API_KEY* with your own **API_KEY** and **APP_ID**
  
-       `static let APP_ID = "XXXXXXXXXX"`
-        
-       `static let API_KEY = "XXXXXXXXXX"`
        
        
             
@@ -88,7 +83,7 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
    
    
      
-  ![Studio Guide](https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/AuthenticationClass.png)                                      
+  ![Studio Guide](https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/PULSE_001/Screenshots/Authentication.png)                                      
   
   
      
