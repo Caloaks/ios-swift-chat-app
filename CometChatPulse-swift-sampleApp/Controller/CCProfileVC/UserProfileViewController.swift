@@ -8,15 +8,22 @@
 
 import UIKit
 
+
+class UserProfileCell {
+    
+    static let AUDIO_CALL_CELL = 0
+    static let VIDEO_CALL_CELL = 1
+    
+}
+
 class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
   
-    
-
     //Outlets Declarations
     @IBOutlet weak var userProfileAvtar: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userStatus: UILabel!
     @IBOutlet weak var userProfileTableView: UITableView!
+    @IBOutlet weak var profileAvtarBackground: UIView!
     
     
     //Variable Declarations
@@ -55,6 +62,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.hidesBottomBarWhenPushed = true
         navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.titleTextAttributes  = [NSAttributedStringKey.foregroundColor: UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)]
         guard (UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView) != nil else {
             return
         }
@@ -77,8 +85,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
                                       target: navigationController,
                                       action: #selector(UINavigationController.popViewController(animated:)))
         navigationItem.leftBarButtonItem = backBTN
-        backBTN.tintColor = UIColor.white
+        backBTN.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+        
+        // User Profile BAckground
+        profileAvtarBackground.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
         
         // UserProfile Name
         userName.text = getUserName
@@ -117,14 +128,14 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             cell.CellTitle.text = "Audio Call"
             let image = UIImage(named: "audio_call")!.withRenderingMode(.alwaysTemplate)
             cell.CellRightImage.image = image
-            cell.CellRightImage.tintColor = UIColor.init(hexFromString: UserProfileCell.RIGHT_IMAGE_TINT_COLOR)
+            cell.CellRightImage.tintColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
             
         case UserProfileCell.VIDEO_CALL_CELL:
             cell.CellLeftImage.isHidden = true
             cell.CellTitle.text = "Video Call"
             let image = UIImage(named: "video_call")!.withRenderingMode(.alwaysTemplate)
             cell.CellRightImage.image = image
-            cell.CellRightImage.tintColor = UIColor.init(hexFromString: UserProfileCell.RIGHT_IMAGE_TINT_COLOR)
+            cell.CellRightImage.tintColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
         default:
             cell.CellTitle.text = ""
             

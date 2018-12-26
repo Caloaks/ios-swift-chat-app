@@ -10,14 +10,17 @@ import UIKit
 import CometChatPulseSDK
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CometChatPulseDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CometChatPulseDelegate,  UISplitViewControllerDelegate{
 
     var window: UIWindow?
     var cometchat:CometChat!
     
     func initialization(){
         // init the Cometchat by using your app id
-        cometchat = CometChat(appId: Authentication.APP_ID) { (error) in
+        
+        let App_ID:String = Bundle.main.infoDictionary?["APP_ID"] as! String
+        
+        cometchat = CometChat(appId:App_ID ) { (error) in
             print("error is : \(error)")
         }
         
@@ -25,9 +28,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CometChatPulseDelegate {
         cometchat.delegate = self
     }
     
+    func setupGlobalAppearance(){
+        
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
+        }
+        
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+     
         self.initialization()
+        self.setupGlobalAppearance()
+        UIFont.overrideInitialize()
+        
+      switch AppAppearance{
+        case .cometchat:
+            application.statusBarStyle = .lightContent
+//            UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+//            // Sets shadow (line below the bar) to a blank image
+//            UINavigationBar.appearance().shadowImage = UIImage()
+//            // Sets the translucent background color
+//            UINavigationBar.appearance().backgroundColor = .clear
+//            // Set translucent. (Default value is already true, so this can be removed if desired.)
+            UINavigationBar.appearance().isTranslucent = false
+            UINavigationBar.appearance().backgroundColor = .clear
+        case .facebook: break
+            
+        case .whatsapp: break
+            
+        }
+        
         return true
     }
     

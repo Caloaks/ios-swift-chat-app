@@ -15,7 +15,9 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     @IBOutlet weak var notifyButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
-
+    @IBOutlet weak var leftPadding: NSLayoutConstraint!
+    @IBOutlet weak var rightPadding: NSLayoutConstraint!
+    
     //Variable Declarations
     private var _blurView: UIVisualEffectView?
     var searchController:UISearchController!
@@ -72,25 +74,33 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     func  handleContactListVCAppearance(){
         
         // ViewController Appearance
-        view.backgroundColor = UIColor(hexFromString: UIAppearance.BACKGROUND_COLOR)
+        view.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
         
         //TableView Appearance
-        self.oneOneOneTableView.cornerRadius = CGFloat(UIAppearance.TABLEVIEW_CORNER_RADIUS)
+        self.oneOneOneTableView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
         oneOneOneTableView.tableFooterView = UIView(frame: .zero)
+        self.leftPadding.constant = CGFloat(UIAppearanceSize.Padding)
+        self.rightPadding.constant = CGFloat(UIAppearanceSize.Padding)
         
+        switch AppAppearance{
+        case .facebook: self.oneOneOneTableView.separatorStyle = .none
+        case .whatsapp: break
+        case .cometchat: break
+        }
         // NavigationBar Appearance
+        
         navigationItem.title = "Contacts"
         let normalTitleforNavigationBar = [
-            NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_TITLE_COLOR),
-            NSAttributedString.Key.font: UIFont(name: UIAppearance.NAVIGATION_BAR_TITLE_FONT, size: CGFloat(UIAppearance.NAVIGATION_BAR_TITLE_FONT_SIZE))!]
+            NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),
+            NSAttributedString.Key.font: UIFont(name: SystemFont.regular.value, size: 21)!]
         navigationController?.navigationBar.titleTextAttributes = normalTitleforNavigationBar
-        navigationController?.navigationBar.barTintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_COLOR)
+        navigationController?.navigationBar.barTintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
         
         if #available(iOS 11.0, *) {
                 navigationController?.navigationBar.prefersLargeTitles = true
                 let letlargeTitleforNavigationBar = [
-                NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_LARGE_TITLE_COLOR),
-                NSAttributedString.Key.font: UIFont(name: UIAppearance.NAVIGATION_BAR_LARGE_TITLE_FONT, size: CGFloat(UIAppearance.NAVIGATION_BAR_LARGE_TITLE_FONT_SIZE))!]
+                NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),
+                NSAttributedString.Key.font: UIFont(name: SystemFont.bold.value, size: 40)!]
                 navigationController?.navigationBar.largeTitleTextAttributes = letlargeTitleforNavigationBar
         } else {
             
@@ -102,15 +112,21 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         moreButton.setImage(UIImage(named: "more_vertical.png"), for: .normal)
         
        // notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
-        createButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
-        moreButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        createButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         
         
         // SearchBar Apperance
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
-        searchController.searchBar.tintColor = UIColor.white
+        searchController.searchBar.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
+        
+         if (Bundle.main.infoDictionary?["UIApperance"] as? String)?.getApperance == .cometchat {
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
+         }else{
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
+        }
+        
         
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
         
@@ -118,16 +134,16 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         let SearchImage = UIImage(named: "icons8-search-30")!.withRenderingMode(.alwaysTemplate)
         SearchImageView.image = SearchImage
         SearchImageView.tintColor = UIColor.init(white: 1, alpha: 0.5)
-        
+       
         searchController.searchBar.setImage(SearchImageView.image, for: UISearchBarIcon.search, state: .normal)
         if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
             textfield.textColor = UIColor.white
             if let backgroundview = textfield.subviews.first{
                 
                 // Background color
-                backgroundview.backgroundColor = UIColor.init(hexFromString: "62adff")
+                backgroundview.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
                 // Rounded corner
-                backgroundview.layer.cornerRadius = 10;
+                backgroundview.layer.cornerRadius = 10
                 backgroundview.clipsToBounds = true;
             }
         }
@@ -158,6 +174,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         
         //User Name:
         cell.buddyName.text = buddyData.name
+        
          //User Status:
         cell.buddyStatus.text = buddyData.status
         
@@ -173,14 +190,8 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         }
         
         // User Avtar :
-        let buddyURL:String = buddyData.avatar ?? ""
-        if(buddyURL == ""){
-         cell.buddyAvtar.image = UIImage(named: "default_user.jpg")
-        }else{
-        cell.buddyAvtar.imageFromURL(urlString:buddyURL)
-        }
+        cell.buddyAvtar.downloaded(from: buddyData.avatar ?? "")
         
-        print("urls are : \(buddyURL)")
         return cell
     }
     
@@ -207,22 +218,47 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+      
+        
         
     }
     
+
     
     
+
     //didSelectRowAt indexPath
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+   
         let selectedCell:OneOnOneTableViewCell = tableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+       let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
         oneOnOneChatViewController.buddyStatusString = selectedCell.buddyStatus.text
         oneOnOneChatViewController.buddyAvtar = selectedCell.buddyAvtar.image
         oneOnOneChatViewController.buddyNameString = selectedCell.buddyName.text
+    
+  // self.performSegue(withIdentifier: "showDetail", sender: self)
         navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
     }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        print("i m here");
+//       if segue.identifier == "showDetail" {
+//            if let indexPath =  oneOneOneTableView.indexPathForSelectedRow {
+//                let selectedCell:OneOnOneTableViewCell = oneOneOneTableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
+//                let controller = (segue.destination as! UINavigationController).topViewController as! OneOnOneChatViewController
+//                print("slected name:\(String(describing: selectedCell.buddyName.text))")
+//                controller.buddyNameString = selectedCell.buddyName.text
+//                controller.buddyAvtar = selectedCell.buddyAvtar.image
+//                controller.buddyStatusString = selectedCell.buddyStatus.text
+//                controller.navigationItem.leftBarButtonItem = navigationItem.backBarButtonItem
+//                controller.navigationItem.leftItemsSupplementBackButton = true
+//                
+//            }
+//        }
+//    }
     
      //heightForRowAt indexPath
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

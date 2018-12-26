@@ -20,8 +20,8 @@ class UserProfileViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        
+        cellBackgroundView.layer.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
+        //cellBackgroundView.clipsToBounds = true
         
     }
 

@@ -29,9 +29,11 @@ class CCprofileAvtarViewController: UIViewController {
     //This method handles the UI customization for WebVC
     func  handleCCProfileAvtarVCAppearance(){
         
+        
         // ViewController Appearance
         self.hidesBottomBarWhenPushed = true
         navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.titleTextAttributes  = [NSAttributedStringKey.foregroundColor: UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)]
         guard (UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView) != nil else {
             return
         }
@@ -54,7 +56,7 @@ class CCprofileAvtarViewController: UIViewController {
                                       target: navigationController,
                                       action: #selector(UINavigationController.popViewController(animated:)))
         navigationItem.leftBarButtonItem = backBTN
-        backBTN.tintColor = UIColor.white
+        backBTN.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
         
         // Profile Avtar

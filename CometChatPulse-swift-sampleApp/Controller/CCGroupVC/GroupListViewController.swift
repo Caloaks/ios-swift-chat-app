@@ -16,6 +16,8 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     @IBOutlet weak var notifyButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var leftPadding: NSLayoutConstraint!
+    @IBOutlet weak var rightPadding: NSLayoutConstraint!
     
     //Variable Declarations
     var nameArray:[String]!
@@ -32,7 +34,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         super.viewDidLoad()
         
         //Function Calling
-        //self.fetchGroupList()
+        self.fetchGroupList()
         
         //Memory Allocation
         joinedChatRoomList = [Group]()
@@ -43,7 +45,6 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             NotificationCenter.default.addObserver(self, selector: #selector(self.fetchGroupListFrom(_:)), name: NSNotification.Name(rawValue: "com.groupsData"), object: nil)
         }
         groupTableView.reloadData()
-        
         
         //Assigning Delegates
         groupTableView.delegate = self
@@ -64,8 +65,12 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
     @objc func fetchGroupListFrom(_ notification: NSNotification) {
         
         print("CallingfetchGroupListFrom \(notification)")
-       // groupArray = (notification.userInfo!["groupsData"] as! Array<group>)
-        self.groupTableView.reloadData()
+        groupArray = notification.userInfo?["groupsData"] as? Array<Group>
+        //groupArray = ((notification.userInfo["groupsData"]) as! Array<Group>)
+        DispatchQueue.main.async{
+             self.groupTableView.reloadData()
+        }
+       
     }
     
     func fetchGroupList(){
@@ -94,59 +99,40 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             DispatchQueue.main.async(execute: { self.groupTableView.reloadData()
             })
         }
-    
-//     groupRequest = GroupsRequest.GroupsRequestBuilder(Limit: 10).build()
-//
-//        groupRequest.fetchNext { (groupArray, Error) in
-//
-//            for newGroup:Group in groupArray!{
-//
-//                if(newGroup.isJoined == true){
-//                    self.joinedChatRoomList.append(newGroup)
-//                    print("joinedChatRoomList is:",self.joinedChatRoomList)
-//                }else{
-//                    self.othersChatRoomList.append(newGroup)
-//                    print("othersChatRoomList is:",self.othersChatRoomList)
-//                }
-//            }
-//
-//            DispatchQueue.main.async(execute: {
-//                self.groupTableView.reloadData()
-//            })
-//
-//        }
-        
+
     }
     
     //This method handles the UI customization for handleGroupListVC
     func  handleGroupListVCAppearance(){
         
         // ViewController Appearance
-        view.backgroundColor = UIColor(hexFromString: UIAppearance.BACKGROUND_COLOR)
+         view.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
         
         //TableView Appearance
-        self.groupTableView.cornerRadius = CGFloat(UIAppearance.TABLEVIEW_CORNER_RADIUS)
+        self.groupTableView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
+        self.leftPadding.constant = CGFloat(UIAppearanceSize.Padding)
+        self.rightPadding.constant = CGFloat(UIAppearanceSize.Padding)
         
-        //        groupTableView.backgroundView?.tintColor = UIColor.white
-        //        groupTableView.backgroundColor = UIColor.white
-        //        groupTableView.tintColor = UIColor.white
+        switch AppAppearance{
+        case .facebook: self.groupTableView.separatorStyle = .none
+        case .whatsapp: break
+        case .cometchat: break
+        }
         
         // NavigationBar Appearance
         navigationItem.title = "Groups"
         let normalTitleforNavigationBar = [
-        NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_TITLE_COLOR),
-        NSAttributedString.Key.font: UIFont(name: UIAppearance.NAVIGATION_BAR_TITLE_FONT, size: CGFloat(UIAppearance.NAVIGATION_BAR_TITLE_FONT_SIZE))!]
+            NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),
+            NSAttributedString.Key.font: UIFont(name: SystemFont.regular.value, size: 21)!]
         navigationController?.navigationBar.titleTextAttributes = normalTitleforNavigationBar
-        navigationController?.navigationBar.barTintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_COLOR)
+        navigationController?.navigationBar.barTintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
             let letlargeTitleforNavigationBar = [
-            NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_LARGE_TITLE_COLOR),
-            NSAttributedString.Key.font: UIFont(name: UIAppearance.NAVIGATION_BAR_LARGE_TITLE_FONT, size: CGFloat(UIAppearance.NAVIGATION_BAR_LARGE_TITLE_FONT_SIZE))!]
+                NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),
+                NSAttributedString.Key.font: UIFont(name: SystemFont.bold.value, size: 40)!]
             navigationController?.navigationBar.largeTitleTextAttributes = letlargeTitleforNavigationBar
-        } else {
-            
         }
         
         // NavigationBar Buttons Appearance
@@ -156,14 +142,20 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         moreButton.setImage(UIImage(named: "more_vertical.png"), for: .normal)
         
         //notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
-        createButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
-        moreButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        createButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         
         // SearchBar Apperance
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
-        searchController.searchBar.tintColor = UIColor.white
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
+        searchController.searchBar.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
+        
+        if (Bundle.main.infoDictionary?["UIApperance"] as? String)?.getApperance == .cometchat {
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Group", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
+        }else{
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Group", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
+        }
+        
         
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
         
@@ -178,7 +170,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             if let backgroundview = textfield.subviews.first{
                 
                 // Background color
-                backgroundview.backgroundColor = UIColor.init(hexFromString: "62adff")
+                backgroundview.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
                 // Rounded corner
                 backgroundview.layer.cornerRadius = 10;
                 backgroundview.clipsToBounds = true;
@@ -223,21 +215,37 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         }
         
         cell.groupName.text = group.name
+        
         let groupIconURL:String = group.icon ?? "null"
-        cell.groupAvtar.imageFromURL(urlString:groupIconURL)
-        cell.groupParticipants.text = "Participants : 00"
+        cell.groupAvtar.downloaded(from: groupIconURL)
+        cell.groupParticipants.text = group.groupDescription
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedCell:GroupTableViewCell = tableView.cellForRow(at: indexPath) as! GroupTableViewCell
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
+       // oneOnOneChatViewController.buddyStatusString = selectedCell.groupName.text
+        oneOnOneChatViewController.buddyAvtar = selectedCell.groupAvtar.image
+        oneOnOneChatViewController.buddyNameString = selectedCell.groupName.text
+        
+        // self.performSegue(withIdentifier: "showDetail", sender: self)
+        navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
+        
+        
     }
     
     //titleForHeaderInSection indexPath -->
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if(section == 0) {
-            return "JOINED GROUPS"
+            return "Joined Groups"
         }
         else {
-            return "OTHER GROUPS"
+            return "Other Groups"
         }
     }
     

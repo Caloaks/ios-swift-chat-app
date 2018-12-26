@@ -19,8 +19,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe Up to begin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIZ-V9-aPU">
-                                <rect key="frame" x="115" y="638" width="145" height="24"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <rect key="frame" x="117.5" y="638" width="140" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -34,7 +34,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rqd-Im-aXs">
                                 <rect key="frame" x="0.0" y="167" width="375" height="500"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="Psb-Ac-B2S" kind="embed" identifier="view1" id="5pb-93-6J7"/>
                                 </connections>
@@ -79,6 +79,7 @@
                         <outlet property="CClogoTop" destination="91F-bl-2Up" id="q3P-gp-dpj"/>
                         <outlet property="activity" destination="F5m-bJ-5rN" id="PP7-UF-rWN"/>
                         <outlet property="bottomView" destination="Rqd-Im-aXs" id="HIS-64-IBU"/>
+                        <outlet property="cometChatLogo" destination="tYk-RO-mg9" id="KKr-gF-nlI"/>
                         <outlet property="swipeUpLbel" destination="OIZ-V9-aPU" id="cnd-dK-0Bu"/>
                     </connections>
                 </viewController>
@@ -115,7 +116,7 @@
                                             <constraint firstAttribute="height" constant="40" id="2tH-1R-ab8"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_person" translatesAutoresizingMaskIntoConstraints="NO" id="eMs-3w-e28">
@@ -138,9 +139,6 @@
                                     <constraint firstItem="LYH-Zs-qGq" firstAttribute="leading" secondItem="WlU-Nf-Mkt" secondAttribute="trailing" constant="8" id="WdM-ET-xib"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
@@ -174,7 +172,7 @@
                                             <constraint firstAttribute="height" constant="40" id="vCz-Vz-EkY"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-eye-96" translatesAutoresizingMaskIntoConstraints="NO" id="TVS-bL-7LI">
@@ -197,9 +195,6 @@
                                     <constraint firstItem="ke5-Zl-VAJ" firstAttribute="leading" secondItem="cfm-ti-LUd" secondAttribute="leading" constant="20" id="stA-lL-5Pe"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
@@ -220,10 +215,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vp-rx-PdT">
                                 <rect key="frame" x="25" y="210" width="364" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SxQ-tE-qAg">
-                                        <rect key="frame" x="13" y="20" width="116" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SxQ-tE-qAg">
+                                        <rect key="frame" x="13" y="5" width="279" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.44647121429443359" green="0.44758284091949463" blue="0.45891892910003662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -234,9 +228,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="noB-bS-F80" firstAttribute="leading" secondItem="SxQ-tE-qAg" secondAttribute="trailing" constant="13" id="1O1-Ca-PcX"/>
+                                    <constraint firstItem="SxQ-tE-qAg" firstAttribute="top" secondItem="0vp-rx-PdT" secondAttribute="top" constant="5" id="Fbm-EK-L4a"/>
                                     <constraint firstAttribute="height" constant="60" id="Mql-vj-WsX"/>
+                                    <constraint firstAttribute="bottom" secondItem="SxQ-tE-qAg" secondAttribute="bottom" constant="5" id="VCD-1B-UIS"/>
                                     <constraint firstAttribute="trailing" secondItem="noB-bS-F80" secondAttribute="trailing" constant="10" id="oeZ-aQ-Z2s"/>
                                     <constraint firstItem="noB-bS-F80" firstAttribute="centerY" secondItem="0vp-rx-PdT" secondAttribute="centerY" id="s5g-JT-oUO"/>
+                                    <constraint firstItem="SxQ-tE-qAg" firstAttribute="leading" secondItem="0vp-rx-PdT" secondAttribute="leading" constant="13" id="zPx-Lq-7hf"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -265,18 +263,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOz-zm-U80">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="60"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Login">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="30"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="ripplePercent">
-                                                <real key="value" value="6"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="login:" destination="Psb-Ac-B2S" eventType="touchUpInside" id="1ZS-cU-m8K"/>
                                         </connections>
@@ -315,24 +305,18 @@
                                 <rect key="frame" x="25" y="348" width="364" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4Zs-lK-3BN">
-                                        <rect key="frame" x="58.5" y="16.5" width="247.5" height="27"/>
+                                        <rect key="frame" x="58.5" y="16.5" width="247" height="27"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DON'T HAVE AN ACCOUNT?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeM-Kf-fcT">
-                                                <rect key="frame" x="0.0" y="0.0" width="162.5" height="27"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="162" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.44647121429999997" green="0.4475828409" blue="0.45891892909999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4c-B9-Q8o">
-                                                <rect key="frame" x="172.5" y="0.0" width="75" height="27"/>
+                                                <rect key="frame" x="172" y="0.0" width="75" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                 <state key="normal" title="TRY A DEMO"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="ripplePercent">
-                                                        <real key="value" value="4"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="guestLogin:" destination="Psb-Ac-B2S" eventType="touchUpInside" id="z03-Kv-IV7"/>
                                                 </connections>
@@ -427,12 +411,6 @@
                             </constraint>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zYJ-wE-Tvy"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="15"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
-                        </userDefinedRuntimeAttributes>
                     </view>
                     <size key="freeformSize" width="414" height="450"/>
                     <userDefinedRuntimeAttributes>
@@ -442,16 +420,20 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="PasswordView" destination="cfm-ti-LUd" id="qUF-WQ-sxi"/>
+                        <outlet property="UserNameView" destination="J0y-Vr-38u" id="1Xc-pg-WoU"/>
                         <outlet property="bottomViewTop" destination="GDM-kZ-Kgn" id="Jqt-Pw-bvT"/>
                         <outlet property="bottomViewUpArrow" destination="5bk-b1-C3i" id="UIa-kB-Gt4"/>
                         <outlet property="loginButton" destination="gOz-zm-U80" id="QNv-M7-pQd"/>
                         <outlet property="password" destination="1Af-J2-CTW" id="2rF-Ln-J9q"/>
+                        <outlet property="switchBtn" destination="noB-bS-F80" id="kMj-od-sqi"/>
+                        <outlet property="tryADemo" destination="r4c-B9-Q8o" id="S0r-dW-lhk"/>
                         <outlet property="userName" destination="LYH-Zs-qGq" id="X57-pb-tnv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6pr-Q6-5tY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2989" y="-1317"/>
+            <point key="canvasLocation" x="2988.8000000000002" y="-1317.8410794602701"/>
         </scene>
         <!--Item-->
         <scene sceneID="O55-Cb-3zb">
@@ -559,7 +541,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XXm-sM-AuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -585,19 +576,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aPE-aj-Uwh">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_user" translatesAutoresizingMaskIntoConstraints="NO" id="aPE-aj-Uwh">
                                                     <rect key="frame" x="10" y="10" width="55" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="55" id="HuX-XZ-PND"/>
                                                         <constraint firstAttribute="width" constant="55" id="wGb-cw-zq1"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                            <color key="value" red="0.85098039219999999" green="0.85882352939999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.85098039219999999" green="0.85882352939999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Kpt-PX-nFq">
                                                     <rect key="frame" x="75" y="10" width="240" height="54.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cag-eE-72x">
                                                             <rect key="frame" x="0.0" y="0.0" width="240" height="24"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -619,9 +624,9 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnj-Le-9FZ">
-                                                                    <rect key="frame" x="15" y="1.5" width="225" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                                    <nil key="textColor"/>
+                                                                    <rect key="frame" x="15" y="2.5" width="225" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -688,9 +693,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="leftPadding" destination="gfV-PD-5zV" id="3rq-6c-Axr"/>
                         <outlet property="moreButton" destination="Nyr-i0-PEt" id="Int-pO-qiM"/>
                         <outlet property="notifyButton" destination="7Ha-im-5eQ" id="ELI-u0-7Ng"/>
                         <outlet property="recentTableView" destination="D8d-ZW-atU" id="fAZ-gH-8ef"/>
+                        <outlet property="rightPadding" destination="0vX-g8-sYL" id="Xae-dK-oQD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dF0-gB-hGW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -726,7 +733,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vVh-9C-fSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3020" y="726"/>
+            <point key="canvasLocation" x="814" y="62"/>
         </scene>
         <!--User Profile View Controller-->
         <scene sceneID="eJg-Iy-dGL">
@@ -745,6 +752,7 @@
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kvk-nu-hqD">
                                 <rect key="frame" x="87.5" y="40" width="200" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="B5u-Ru-dI0"/>
                                     <constraint firstAttribute="height" constant="200" id="zTJ-6y-Q86"/>
@@ -752,6 +760,24 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="13"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.87" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
@@ -762,14 +788,14 @@
                                         <rect key="frame" x="10" y="10" width="335" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSp-qz-Hc9">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="28.5"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="28"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4Z-1R-htt">
-                                                <rect key="frame" x="0.0" y="33.5" width="335" height="21.5"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="33" width="335" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -825,7 +851,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="nkF-Oy-Kyj"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -859,6 +885,9 @@
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                                             <color key="value" white="0.87" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -903,6 +932,7 @@
                         <viewLayoutGuide key="safeArea" id="It6-lz-UP3"/>
                     </view>
                     <connections>
+                        <outlet property="profileAvtarBackground" destination="mbz-Do-PHA" id="uu6-O8-NwI"/>
                         <outlet property="userName" destination="GSp-qz-Hc9" id="toY-Ib-kWn"/>
                         <outlet property="userProfileAvtar" destination="kvk-nu-hqD" id="foS-uJ-1Gp"/>
                         <outlet property="userProfileTableView" destination="kU1-pq-uDS" id="I58-1F-ZQp"/>
@@ -911,7 +941,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bji-Lr-be9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3712.8000000000002" y="727.28635682158927"/>
+            <point key="canvasLocation" x="129" y="9"/>
         </scene>
         <!--More Settings View Controller-->
         <scene sceneID="pxm-XS-z9H">
@@ -952,7 +982,7 @@
                                             <constraint firstAttribute="height" constant="40" id="sJS-0C-Ajr"/>
                                         </constraints>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -1001,7 +1031,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="A6e-wA-BW7"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.44647121429999997" green="0.4475828409" blue="0.45891892909999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1150,14 +1180,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="tuU-gK-QgD">
                         <rightBarButtonItems>
-                            <barButtonItem image="video_call" id="4NT-ax-RBb">
+                            <barButtonItem title="Item" id="4NT-ax-RBb">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </barButtonItem>
-                            <barButtonItem image="audio_call" id="GPS-Kf-3iX">
+                            <barButtonItem title="Item" id="GPS-Kf-3iX">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="audioCallButton" destination="GPS-Kf-3iX" id="dh5-VB-vip"/>
+                        <outlet property="videoCallBtn" destination="4NT-ax-RBb" id="1Ad-oT-IeJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCN-nC-ytL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1192,6 +1226,18 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                            <color key="value" red="0.85098039215686272" green="0.85882352941176465" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.85098039219999999" green="0.85882352939999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Cqx-l1-Uno">
@@ -1199,7 +1245,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8H-dJ-GpV">
                                                             <rect key="frame" x="0.0" y="0.0" width="235" height="24"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -1221,9 +1267,9 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tt-Qt-yy0">
-                                                                    <rect key="frame" x="15" y="1.5" width="220" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                                    <nil key="textColor"/>
+                                                                    <rect key="frame" x="15" y="2.5" width="220" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -1303,10 +1349,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="createButton" destination="z8q-hS-68v" id="3kN-gu-yll"/>
+                        <outlet property="leftPadding" destination="eBf-Cx-TeB" id="Rke-W4-aAp"/>
                         <outlet property="moreButton" destination="ORf-yd-4rN" id="BzN-pe-scj"/>
                         <outlet property="notifyButton" destination="vMK-db-SHF" id="TeD-2Q-ftc"/>
                         <outlet property="oneOneOneTableView" destination="leV-GX-Sov" id="SM0-V6-m6D"/>
-                        <segue destination="3Zc-kv-7OJ" kind="show" identifier="oneOnOneChatViewController" id="sw2-yl-3IA"/>
+                        <outlet property="rightPadding" destination="oSk-3I-GOX" id="H6c-KX-Ox7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79R-0X-35X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1368,19 +1415,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U1I-k2-tki">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_user_icon" translatesAutoresizingMaskIntoConstraints="NO" id="U1I-k2-tki">
                                                     <rect key="frame" x="10" y="10" width="55" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="55" id="VmA-W3-Xi8"/>
                                                         <constraint firstAttribute="width" constant="55" id="rF0-wt-gqD"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.85098039215686272" green="0.85882352941176465" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="NTu-ld-UxN">
                                                     <rect key="frame" x="75" y="10" width="240" height="54.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyP-eg-yaK">
                                                             <rect key="frame" x="0.0" y="0.0" width="240" height="24"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -1388,9 +1443,9 @@
                                                             <rect key="frame" x="0.0" y="31" width="240" height="23.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5Q-Dl-NDn">
-                                                                    <rect key="frame" x="0.0" y="1.5" width="240" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                                    <nil key="textColor"/>
+                                                                    <rect key="frame" x="0.0" y="2.5" width="240" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -1470,8 +1525,10 @@
                     <connections>
                         <outlet property="createButton" destination="k0V-Qu-bZc" id="AuK-H9-egq"/>
                         <outlet property="groupTableView" destination="bys-yQ-Kdc" id="M9c-9J-RDL"/>
+                        <outlet property="leftPadding" destination="Fyr-1x-QLL" id="SPa-Fe-96a"/>
                         <outlet property="moreButton" destination="hUE-pR-GB3" id="xB6-We-usg"/>
                         <outlet property="notifyButton" destination="R2q-dz-7Y7" id="Ox3-pB-n54"/>
+                        <outlet property="rightPadding" destination="Z8V-UD-avO" id="Lb1-9G-mCY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bVh-S9-k1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1499,16 +1556,15 @@
     </scenes>
     <resources>
         <image name="arrow" width="10.5" height="17"/>
-        <image name="audio_call" width="19.5" height="20"/>
         <image name="bottomV_middle" width="24" height="24"/>
         <image name="cometchat_white" width="360" height="439"/>
         <image name="default_user" width="146.8800048828125" height="146.8800048828125"/>
+        <image name="default_user_icon" width="280" height="280"/>
         <image name="downArrow" width="24" height="24"/>
         <image name="ic_person" width="14" height="14"/>
         <image name="icons8-eye-96" width="21" height="15"/>
         <image name="icons8-lock-52" width="15" height="17"/>
         <image name="menu" width="24" height="24"/>
-        <image name="video_call" width="25" height="15"/>
         <image name="video_callokg." width="16" height="16"/>
     </resources>
 </document>
