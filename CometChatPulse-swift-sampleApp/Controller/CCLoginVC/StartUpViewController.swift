@@ -15,6 +15,7 @@ class startUpViewController: UIViewController,CCBottomSlideDelegate, UITextField
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var CClogoTop: NSLayoutConstraint!
     @IBOutlet weak var activity: CCActivityIndicator!
+    @IBOutlet weak var cometChatLogo: UIImageView!
     
     // Variable Declarations
     var bottomController:CCBottomSlideController?
@@ -29,9 +30,19 @@ class startUpViewController: UIViewController,CCBottomSlideDelegate, UITextField
         super.viewDidLoad()
         
         //Function Calling
+        self.handleStartUpVCApperance()
         self.handleBottomView()
         self.handleAnimations()
         self.handleLogoDistance()
+    }
+    
+    func handleStartUpVCApperance() {
+        self.view.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+        self.cometChatLogo.tintColor = UIColor.red
+        cometChatLogo.image = cometChatLogo.image!.withRenderingMode(.alwaysTemplate)
+        cometChatLogo.tintColor = UIColor.init(hexFromString: UIAppearanceColor.LOGO_TINT_COLOR)
+        swipeUpLbel.textColor = UIColor.init(hexFromString: UIAppearanceColor.LOGO_TINT_COLOR)
+        
     }
     
     

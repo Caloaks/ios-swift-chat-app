@@ -1,5 +1,5 @@
 PODS:
-  - CometChatPulseSDK (0.0.3)
+  - CometChatPulseSDK (0.0.5)
 
 DEPENDENCIES:
   - CometChatPulseSDK
@@ -9,8 +9,8 @@ SPEC REPOS:
     - CometChatPulseSDK
 
 SPEC CHECKSUMS:
-  CometChatPulseSDK: 49d16cae6338283b6fedc62ffb66a337b301c29a
+  CometChatPulseSDK: 824205174fc816126e57fc1c49104c8d6e4dec7b
 
-PODFILE CHECKSUM: 233df8c2ddf69ab198ff0d0d8e46dba14ce9301f
+PODFILE CHECKSUM: 1ce07bb2c8e9e1aa6295b310ab89837bb1a8c730
 
 COCOAPODS: 1.5.3

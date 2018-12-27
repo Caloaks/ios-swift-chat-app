@@ -171,7 +171,7 @@ extension UIImageView {
         
         let buddyAvtar = UIImage(named: "default_user.jpg")
         let containView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
-        containView.backgroundColor = UIColor.white
+        containView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
         containView.layer.cornerRadius = 19
         containView.layer.masksToBounds = true
         let imageview = UIImageView(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
@@ -204,6 +204,27 @@ extension UIImageView {
             })
             
         }).resume()
+    }
+}
+
+extension UIImageView {
+    func downloaded(from url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() {
+                self.image = image
+            }
+            }.resume()
+    }
+    func downloaded(from link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
+        guard let url = URL(string: link) else { return }
+        downloaded(from: url, contentMode: mode)
     }
 }
 
@@ -293,5 +314,112 @@ extension UIImage {
         image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
+    }
+}
+
+
+
+// Font :
+
+import UIKit
+
+
+
+extension UIFontDescriptor.AttributeName {
+    static let nsctFontUIUsage = UIFontDescriptor.AttributeName(rawValue: "NSCTFontUIUsageAttribute")
+}
+
+extension UIFont {
+    
+    @objc class func mySystemFont(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: UIAppearanceFont.regular, size: size)!
+    }
+    
+    @objc class func myBoldSystemFont(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: UIAppearanceFont.bold, size: size)!
+    }
+    
+    @objc class func myItalicSystemFont(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: UIAppearanceFont.italic, size: size)!
+    }
+    
+    @objc convenience init(myCoder aDecoder: NSCoder) {
+        guard
+            let fontDescriptor = aDecoder.decodeObject(forKey: "UIFontDescriptor") as? UIFontDescriptor,
+            let fontAttribute = fontDescriptor.fontAttributes[.nsctFontUIUsage] as? String else {
+                self.init(myCoder: aDecoder)
+                return
+        }
+        var fontName = ""
+        switch fontAttribute {
+        case "CTFontRegularUsage":
+            fontName = UIAppearanceFont.regular
+        case "CTFontEmphasizedUsage", "CTFontBoldUsage":
+            fontName = UIAppearanceFont.bold
+        case "CTFontObliqueUsage":
+            fontName = UIAppearanceFont.italic
+        default:
+            fontName = UIAppearanceFont.regular
+        }
+        self.init(name: fontName, size: fontDescriptor.pointSize)!
+    }
+    
+    class func overrideInitialize() {
+        guard self == UIFont.self else { return }
+        
+        if let systemFontMethod = class_getClassMethod(self, #selector(systemFont(ofSize:))),
+            let mySystemFontMethod = class_getClassMethod(self, #selector(mySystemFont(ofSize:))) {
+            method_exchangeImplementations(systemFontMethod, mySystemFontMethod)
+        }
+        
+        if let boldSystemFontMethod = class_getClassMethod(self, #selector(boldSystemFont(ofSize:))),
+            let myBoldSystemFontMethod = class_getClassMethod(self, #selector(myBoldSystemFont(ofSize:))) {
+            method_exchangeImplementations(boldSystemFontMethod, myBoldSystemFontMethod)
+        }
+        
+        if let italicSystemFontMethod = class_getClassMethod(self, #selector(italicSystemFont(ofSize:))),
+            let myItalicSystemFontMethod = class_getClassMethod(self, #selector(myItalicSystemFont(ofSize:))) {
+            method_exchangeImplementations(italicSystemFontMethod, myItalicSystemFontMethod)
+        }
+        
+        if let initCoderMethod = class_getInstanceMethod(self, #selector(UIFontDescriptor.init(coder:))), // Trick to get over the lack of UIFont.init(coder:))
+            let myInitCoderMethod = class_getInstanceMethod(self, #selector(UIFont.init(myCoder:))) {
+            method_exchangeImplementations(initCoderMethod, myInitCoderMethod)
+        }
+    }
+}
+
+extension UINavigationController {
+    
+    func setNavigationBarBorderColor(_ color:UIColor) {
+        self.navigationBar.shadowImage = color.as1ptImage()
+    }
+}
+
+
+extension UIColor {
+    
+    /// Converts this `UIColor` instance to a 1x1 `UIImage` instance and returns it.
+    ///
+    /// - Returns: `self` as a 1x1 `UIImage`.
+    func as1ptImage() -> UIImage {
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+        setFill()
+        UIGraphicsGetCurrentContext()?.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+        let image = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+        UIGraphicsEndImageContext()
+        return image
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
