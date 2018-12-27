@@ -42,7 +42,7 @@ class LoginViewController: UIViewController, CometChatPulseDelegate ,UITextField
     
     @IBAction func login(_ sender: Any) {
         
-        CometChat.login(withUid: userName.text!, apiKey: Authentication.API_KEY, onSuccess: { (current_user) in
+        CometChat.login(withUid: "superhero53", apiKey: Authentication.API_KEY, onSuccess: { (current_user) in
             print("login sucess:",current_user)
             //UIButton State Change
             self.loginButton.setTitle("Login Sucessful", for: .normal)

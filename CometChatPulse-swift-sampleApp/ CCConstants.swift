@@ -10,8 +10,8 @@ import Foundation
 
 class Authentication {
     
-    static let APP_ID =  "XXXXXXXXXX"              // Enter your APP_ID
-    static let API_KEY = "XXXXXXXXXX"              // Enter your API_KEY
+    static let APP_ID =  "6e13b23d7a3"              // Enter your APP_ID
+    static let API_KEY = "824649fc1cdf02059975c40174d0af23695aea65"              // Enter your API_KEY
 
     
 }

@@ -3,6 +3,6 @@
 
 target 'CometChatPulse-swift-sampleApp' do
 
-	pod 'CometChatPulseSDK'
+	pod 'CometChatPulseSDK', '0.0.4'
 
 end
