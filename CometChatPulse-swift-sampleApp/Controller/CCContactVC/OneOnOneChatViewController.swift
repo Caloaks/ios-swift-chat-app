@@ -14,7 +14,9 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     @IBOutlet weak var chatInputView: UITextView!
     @IBOutlet weak var chatTableview: UITableView!
     //Outlets Declarations
-   
+    @IBOutlet weak var videoCallBtn: UIBarButtonItem!
+    @IBOutlet weak var audioCallButton: UIBarButtonItem!
+    
     // Variable Declarations
     var buddyNameString:String!
     var buddyStatusString:String!
@@ -39,8 +41,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("buddyNameis: \(String(describing: buddyNameString))")
-    //Function Calling
+        //Function Calling
         self.handleOneOnOneChatVCApperance()
        
         self.chatView.layer.borderWidth = 1
@@ -63,9 +64,13 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         self.hideKeyboardWhenTappedAround()
     }
     
+    
     func handleOneOnOneChatVCApperance(){
         
+        navigationController?.navigationBar.barTintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
+        
         // ViewController Appearance
+        
         self.hidesBottomBarWhenPushed = true
         navigationController?.navigationBar.isTranslucent = false
         guard (UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView) != nil else {
@@ -88,11 +93,20 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
                                       target: navigationController,
                                       action: #selector(UINavigationController.popViewController(animated:)))
         navigationItem.leftBarButtonItem = backBTN
-        backBTN.tintColor = UIColor.white
+        backBTN.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
         
+        //Video Button:
+        videoCallBtn.image =  UIImage.init(named: "video_call.png")
+        videoCallBtn.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        
+        //Audio Button:
+        audioCallButton.image =  UIImage.init(named: "audio_call.png")
+        audioCallButton.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+        
+        
         //BuddyAvtar Apperance
-        //buddyAvtar = UIImage(named: "ic_person.png")
+    
         let containView = UIView(frame: CGRect(x: -10 , y: 0, width: 38, height: 38))
         containView.backgroundColor = UIColor.white
         containView.layer.cornerRadius = 19
@@ -108,21 +122,37 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
         //TitleView Apperance
         let  titleView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
-        self.navigationItem.titleView = titleView
         
-        buddyName = UILabel(frame: CGRect(x:0,y: 3,width: 200,height: 21))
-        buddyName.textColor = UIColor.white
+        self.navigationItem.titleView = titleView
+        buddyName = UILabel(frame: CGRect(x:0,y: 3,width: 150 ,height: 21))
+        buddyName.textColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
         buddyName.textAlignment = NSTextAlignment.left
+//       if count(budd) > 40 {
+//
+//            myHeaderBarString = myHeaderBarString.substringToIndex(40)
+//            myHeaderBarString.append("...")
+//
+//        }
         buddyName.text = buddyNameString
-        buddyName.font = UIFont(name: "AvenirNext-Medium", size: 18)
+        buddyName.font = UIFont(name: SystemFont.regular.value, size: 18)
         titleView.addSubview(buddyName)
         
         buddyStatus = UILabel(frame: CGRect(x:0,y: titleView.frame.origin.y + 22,width: 200,height: 21))
-        buddyStatus.textColor = UIColor.white
+        
+        switch AppAppearance {
+        case .facebook:
+            buddyStatus.textColor = UIColor.init(hexFromString: "3E3E3E")
+        case .whatsapp:
+            buddyStatus.textColor = UIColor.init(hexFromString: "3E3E3E")
+        case .cometchat:
+             buddyStatus.textColor = UIColor.init(hexFromString: "FFFFFF")
+        }
+
         buddyStatus.textAlignment = NSTextAlignment.left
         buddyStatus.text = buddyStatusString
-        buddyStatus.font = UIFont(name: "AvenirNext-Medium", size: 12)
+        buddyStatus.font = UIFont(name: SystemFont.regular.value, size: 12)
         titleView.addSubview(buddyStatus)
+        titleView.center = CGPoint(x: 0, y: 0)
         
         
         // More Actions:
@@ -136,6 +166,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         titleView.addGestureRecognizer(tapOnTitleView)
         
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -228,16 +259,3 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
 
 }
 
-
-//move this to different file
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}

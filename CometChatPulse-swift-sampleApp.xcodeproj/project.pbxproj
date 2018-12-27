@@ -39,7 +39,10 @@
 		58C1D1AE21BBF0D800B64915 /* UserProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D1AD21BBF0D800B64915 /* UserProfileViewCell.swift */; };
 		71ADB0EB21D375A1002443A7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ADB0EA21D375A1002443A7 /* Message.swift */; };
 		71ADB0ED21D41217002443A7 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ADB0EC21D41216002443A7 /* ChatTableViewCell.swift */; };
-		B2A94C6F21BA84A300A0F980 /*  CCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A94C6E21BA84A300A0F980 /*  CCConstants.swift */; };
+		B22301C121D1FCEC00483CC7 /* UIAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22301C021D1FCEC00483CC7 /* UIAppearance.swift */; };
+		B22301C421D26B8000483CC7 /* Product Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22301C221D2659C00483CC7 /* Product Sans Regular.ttf */; };
+		B22301C521D26B8300483CC7 /* Product Sans Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22301C321D265A600483CC7 /* Product Sans Bold.ttf */; };
+		B22301C721D271EF00483CC7 /* Product Sans Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22301C621D271EA00483CC7 /* Product Sans Italic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,7 +92,10 @@
 		58C1D1AD21BBF0D800B64915 /* UserProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewCell.swift; sourceTree = "<group>"; };
 		71ADB0EA21D375A1002443A7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		71ADB0EC21D41216002443A7 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
-		B2A94C6E21BA84A300A0F980 /*  CCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " CCConstants.swift"; sourceTree = "<group>"; };
+		B22301C021D1FCEC00483CC7 /* UIAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAppearance.swift; sourceTree = "<group>"; };
+		B22301C221D2659C00483CC7 /* Product Sans Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Regular.ttf"; sourceTree = "<group>"; };
+		B22301C321D265A600483CC7 /* Product Sans Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Bold.ttf"; sourceTree = "<group>"; };
+		B22301C621D271EA00483CC7 /* Product Sans Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Italic.ttf"; sourceTree = "<group>"; };
 		B2BC6095219DACF9002C24D3 /* CometChatPulse-swift-sampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CometChatPulse-swift-sampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -116,8 +122,8 @@
 		5891248E21B2AC6C003500B5 /* CometChatPulse-swift-sampleApp */ = {
 			isa = PBXGroup;
 			children = (
-				B2A94C6E21BA84A300A0F980 /*  CCConstants.swift */,
 				589124AC21B2AC6C003500B5 /* AppDelegate.swift */,
+				B22301C021D1FCEC00483CC7 /* UIAppearance.swift */,
 				5861795D21BB73AE00829AD3 /* Model */,
 				589124B421B2AC6C003500B5 /* View */,
 				5891249121B2AC6C003500B5 /* Controller */,
@@ -130,6 +136,9 @@
 		5891248F21B2AC6C003500B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B22301C221D2659C00483CC7 /* Product Sans Regular.ttf */,
+				B22301C321D265A600483CC7 /* Product Sans Bold.ttf */,
+				B22301C621D271EA00483CC7 /* Product Sans Italic.ttf */,
 				5891249021B2AC6C003500B5 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -323,9 +332,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B22301C421D26B8000483CC7 /* Product Sans Regular.ttf in Resources */,
+				B22301C521D26B8300483CC7 /* Product Sans Bold.ttf in Resources */,
 				589124D321B2AC6C003500B5 /* Main.storyboard in Resources */,
 				589124B921B2AC6C003500B5 /* Assets.xcassets in Resources */,
 				589124D221B2AC6C003500B5 /* LaunchScreen.storyboard in Resources */,
+				B22301C721D271EF00483CC7 /* Product Sans Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +352,7 @@
 				589124C121B2AC6C003500B5 /* CustomLaunchViewController.swift in Sources */,
 				589124D021B2AC6C003500B5 /* CCExtensions.swift in Sources */,
 				589124CC21B2AC6C003500B5 /* AppDelegate.swift in Sources */,
+				B22301C121D1FCEC00483CC7 /* UIAppearance.swift in Sources */,
 				589124C021B2AC6C003500B5 /* LoginViewController.swift in Sources */,
 				589124CF21B2AC6C003500B5 /* CCActivityIndicator.swift in Sources */,
 				589124BE21B2AC6C003500B5 /* StartUpViewController.swift in Sources */,
@@ -361,7 +374,6 @@
 				589124BC21B2AC6C003500B5 /* RecentTableViewCell.swift in Sources */,
 				58C1D1AC21BBDCF900B64915 /* UserProfileViewController.swift in Sources */,
 				589124C821B2AC6C003500B5 /* OneOnOneListViewController.swift in Sources */,
-				B2A94C6F21BA84A300A0F980 /*  CCConstants.swift in Sources */,
 				589124BA21B2AC6C003500B5 /* MoreSettingsViewController.swift in Sources */,
 				589124DB21B3B2FD003500B5 /* OneOnOneChatViewController.swift in Sources */,
 				589124C321B2AC6C003500B5 /* CreateGroupcontroller.swift in Sources */,
@@ -528,7 +540,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = inscripts.cometchatpulse.swift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -557,7 +569,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = inscripts.cometchatpulse.swift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inscripts.cometchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

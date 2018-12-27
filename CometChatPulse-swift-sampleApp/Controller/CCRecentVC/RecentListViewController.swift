@@ -14,6 +14,8 @@ class RecentListViewController: UIViewController ,UISearchControllerDelegate {
     @IBOutlet weak var recentTableView: UITableView!
     @IBOutlet weak var notifyButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var leftPadding: NSLayoutConstraint!
+    @IBOutlet weak var rightPadding: NSLayoutConstraint!
     
     
     //Variable Declarations
@@ -37,37 +39,41 @@ class RecentListViewController: UIViewController ,UISearchControllerDelegate {
      func  handleRecentListVCAppearance(){
 
         // ViewController Appearance
-        view.backgroundColor = UIColor(hexFromString: UIAppearance.BACKGROUND_COLOR)
+         view.backgroundColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
         
         //TableView Appearance
-        self.recentTableView.cornerRadius = 15
-
-
+        self.recentTableView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
+        self.leftPadding.constant = CGFloat(UIAppearanceSize.Padding)
+        self.rightPadding.constant = CGFloat(UIAppearanceSize.Padding)
+        
+        switch AppAppearance{
+        case .facebook: self.recentTableView.separatorStyle = .none
+        case .whatsapp: break
+        case .cometchat: break
+        }
 //        // NavigationBar Appearance
         navigationItem.title = "Recent"
         let normalTitleforNavigationBar = [
-            NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_TITLE_COLOR),
-            NSAttributedString.Key.font: UIFont(name: UIAppearance.NAVIGATION_BAR_TITLE_FONT, size: CGFloat(UIAppearance.NAVIGATION_BAR_TITLE_FONT_SIZE))!]
+            NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),
+            NSAttributedString.Key.font: UIFont(name: SystemFont.regular.value, size: 21)!]
         navigationController?.navigationBar.titleTextAttributes = normalTitleforNavigationBar
-        navigationController?.navigationBar.barTintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_COLOR)
-
-            if #available(iOS 11.0, *) {
+        navigationController?.navigationBar.barTintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_COLOR)
+        
+        if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
             let letlargeTitleforNavigationBar = [
-            NSAttributedString.Key.foregroundColor:UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_LARGE_TITLE_COLOR),
-            NSAttributedString.Key.font: UIFont(name: UIAppearance.NAVIGATION_BAR_LARGE_TITLE_FONT, size: CGFloat(UIAppearance.NAVIGATION_BAR_LARGE_TITLE_FONT_SIZE))!]
+                NSAttributedString.Key.foregroundColor: UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR),
+                NSAttributedString.Key.font: UIFont(name: SystemFont.bold.value, size: 40)!]
             navigationController?.navigationBar.largeTitleTextAttributes = letlargeTitleforNavigationBar
-            } else {
-
-            }
+        }
 //
 //         // NavigationBar Buttons Appearance
 //
          notifyButton.setImage(UIImage(named: "bell.png"), for: .normal)
          moreButton.setImage(UIImage(named: "more_vertical.png"), for: .normal)
 
-         notifyButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
-         moreButton.tintColor = UIColor(hexFromString: UIAppearance.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+         notifyButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
+         moreButton.tintColor = UIColor(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
     }
     
     

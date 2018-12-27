@@ -11,6 +11,8 @@ import UIKit
 class CreateGroupcontroller: UIViewController {
 
     //Outlets Declaration
+    @IBOutlet weak var groupNameView: UIView!
+    @IBOutlet weak var groupTypeView: UIView!
     @IBOutlet weak var groupType: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
@@ -24,6 +26,7 @@ class CreateGroupcontroller: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         //Function Calling
         self.handleCreateGroupVCAppearance()
+        self.hideKeyboardWhenTappedAround()
     }
     
      //This method handles the UI customization for CreateGroupVC
@@ -39,6 +42,11 @@ class CreateGroupcontroller: UIViewController {
             
         }
         
+        groupNameView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
+        groupTypeView.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
+        createButton.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
+        cancelButton.cornerRadius = CGFloat(UIAppearanceSize.CORNER_RADIUS)
+        
         // NavigationBar Buttons Appearance
         
         let backButtonImage = UIImageView(image: UIImage(named: "back_arrow"))
@@ -48,16 +56,16 @@ class CreateGroupcontroller: UIViewController {
                                       target: navigationController,
                                       action: #selector(UINavigationController.popViewController(animated:)))
         navigationItem.leftBarButtonItem = backBTN
-        backBTN.tintColor = UIColor.white
+        backBTN.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
         
         
         // UIButton Appearance
-        createButton.backgroundColor = UIColor.init(hexFromString: "007AFF")
+        createButton.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR)
         createButton.setTitleColor(UIColor.white, for: .normal)
         cancelButton.layer.borderWidth = 1
-        cancelButton.setTitleColor(UIColor.init(hexFromString: "007AFF"), for: .normal)
-        cancelButton.layer.borderColor = UIColor.init(hexFromString: "007AFF").cgColor
+        cancelButton.setTitleColor(UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR), for: .normal)
+        cancelButton.layer.borderColor = UIColor.init(hexFromString: UIAppearanceColor.LOGIN_BUTTON_TINT_COLOR).cgColor
         
     }
 

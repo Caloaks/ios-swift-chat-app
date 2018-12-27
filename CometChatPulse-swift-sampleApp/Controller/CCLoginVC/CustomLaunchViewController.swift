@@ -32,6 +32,9 @@ class CustomLaunchViewController: UIViewController {
     //This method handles the UI customization for CustomLaunchVC
     func handleCustomLaunchVCApperance(){
         
+        self.view.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+        cometChatLogo.image = cometChatLogo.image!.withRenderingMode(.alwaysTemplate)
+        cometChatLogo.tintColor = UIColor.init(hexFromString: UIAppearanceColor.LOGO_TINT_COLOR)
         UIView.animate(withDuration: 2, animations: {
             self.cometChatLogo.frame.origin.y  -= 200
         }, completion: { (finished: Bool) in
