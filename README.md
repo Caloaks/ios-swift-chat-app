@@ -32,7 +32,7 @@ CometChat-Pulse iOS Demo app made using CometChat-Pulse iOS SDK is a fully funct
 4. [Contributing](#contribute)
 
 
-## ScreenShots
+# ScreenShots
 
 <img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/splash.gif">
    
@@ -49,7 +49,7 @@ CometChat-Pulse iOS Demo app made using CometChat-Pulse iOS SDK is a fully funct
 <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
 
 
-## Installtion 
+# Installtion 
       
    Simply Clone the project from iOS-swift-chat-app repository. Install the CometChatPulseSDK inside your project.
    
@@ -80,7 +80,7 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
    
    
 
-## Running the sample app
+# Running the sample app
 
 
    
@@ -104,15 +104,15 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
    
    For more information read [ios-chat-sdk](https://github.com/CometChat-Pulse/ios-chat-sdk) Documentation
     
- ## Customizing the UI
+ # Customizing the UI
  
  
  
        
-## Integrating this sample into your own app       
+# Integrating this sample into your own app       
        
 
-## Contribute 
+# Contribute 
    
    
    Feel free to make any suggestion or Contribution to the App. 
