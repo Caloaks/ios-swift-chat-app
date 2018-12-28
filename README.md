@@ -19,13 +19,35 @@ CometChat-Pulse iOS Demo app made using CometChat-Pulse iOS SDK is a fully funct
 
 ## Table of Content
 
-1. [Installation ](#installtion)
+1. [ScreenShots](#screenshots)
 
-2. [Run the Sample App ](#run-the-sample-app)
+2. [Installation](#installtion)
 
-3. [ScreenShots ](#screenshots)
+2. [Running the sample app](#run-the-sample-app)
 
-4. [Contribute](#contribute)
+4. [Customizing the UI](#customizing-the-UI)
+
+5. [Integrating this sample into your own app](#integrating-this-sample-into-your-own-app)
+
+4. [Contributing](#contribute)
+
+
+## ScreenShots
+
+<img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/splash.gif">
+   
+
+   <img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/login.gif">
+   
+   
+   <img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/tapOnContact.gif">
+   
+ 
+   
+   <img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/Contacts.gif"></br>                                                      
+   
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
 
 ## Installtion 
       
@@ -58,7 +80,7 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
    
    
 
-## Run the Sample App
+## Running the sample app
 
 
    
@@ -73,47 +95,23 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
  ![Studio Guide](https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/PULSE_001/Screenshots/Authentication.png)    
      
    - Enter the **UID** in Login page. Proceed.
-             
-## Note    
+    
+   
+### Note    
 
 
    You can Obtain your  *APP_ID* and *API_KEY* from [CometChat-Pulse Dashboard](https://app.cometchat.com/#/login)
    
    For more information read [ios-chat-sdk](https://github.com/CometChat-Pulse/ios-chat-sdk) Documentation
+    
+ ## Customizing the UI
+ 
+ 
+ 
        
-   
-   
-     
-                                        
-  
-  
-     
-   
-   
- 
-   
-## ScreenShots
+## Integrating this sample into your own app       
+       
 
-<img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/splash.gif">
-   
-
-   <img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/login.gif">
-   
-   
-   <img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/tapOnContact.gif">
-   
- 
-   
-   <img align="left" width="185" height="331" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/Contacts.gif"></br>                                                      
-   
-<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-   
-   
-   
-   
-   
-   
-   
 ## Contribute 
    
    
