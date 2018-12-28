@@ -71,8 +71,9 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
    -  modify *APP_ID* and *API_KEY* with your own **API_KEY** and **APP_ID**
    
  ![Studio Guide](https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/PULSE_001/Screenshots/Authentication.png)    
-       
-            
+     
+   - Enter the **UID** in Login page. Proceed.
+             
 ## Note    
 
 
