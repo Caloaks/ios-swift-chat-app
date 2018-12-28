@@ -1,3 +1,4 @@
+
 <div style="width:100%">
 	<div style="width:50%; display:inline-block">
 		<h1> CometChatPulse </h1> 
@@ -50,6 +51,7 @@ CometChat-Pulse iOS Demo app made using CometChat-Pulse iOS SDK is a fully funct
 
 
 # Installtion 
+### Note : This project is under progress.
       
    Simply Clone the project from iOS-swift-chat-app repository. Install the CometChatPulseSDK inside your project.
    
@@ -120,6 +122,7 @@ Now you can see installed CometChatPulseSDK framework by inspecting CometChatPul
    You can Download and Modify the Source code according to your need.
    
    Also you can start directly using the App.
+
 
 
 
