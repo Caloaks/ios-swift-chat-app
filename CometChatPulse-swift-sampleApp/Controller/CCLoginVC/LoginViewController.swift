@@ -64,7 +64,7 @@ class LoginViewController: UIViewController, CometChatPulseDelegate ,UITextField
         
         let API_KEY:String = Bundle.main.infoDictionary?["API_KEY"] as! String
         
-        CometChat.login(withUid: userName.text!, apiKey: API_KEY, onSuccess: { (current_user) in
+        CometChat.login(withUid: "superhero53", apiKey: API_KEY, onSuccess: { (current_user) in
             print("login sucess:",current_user)
             //UIButton State Change
             self.loginButton.setTitle("Login Sucessful", for: .normal)

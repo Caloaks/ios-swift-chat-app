@@ -241,6 +241,8 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatTableViewCell
         
+        cell.selectionStyle = .none
+        
         let messageData = chatMessage[indexPath.row]
         
         cell.chatMessage = messageData

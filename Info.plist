@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>Enter API Key</string>
+	<string>824649fc1cdf02059975c40174d0af23695aea65</string>
 	<key>APP_ID</key>
-	<string>Enter APP ID</string>
+	<string>6e13b23d7a3</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
