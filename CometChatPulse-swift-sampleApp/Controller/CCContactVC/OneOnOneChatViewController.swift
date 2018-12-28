@@ -10,7 +10,11 @@ import UIKit
 
 class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var attachmentBtn: UIButton!
+    @IBOutlet weak var ChatViewBottomconstraint: NSLayoutConstraint!
+    @IBOutlet weak var ChatViewWithComponents: UIView!
     @IBOutlet weak var chatView: UIView!
+    @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var chatInputView: UITextView!
     @IBOutlet weak var chatTableview: UITableView!
     //Outlets Declarations
@@ -24,6 +28,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     var buddyAvtar:UIImage!
     var buddyName:UILabel!
     var buddyStatus:UILabel!
+    let modelName = UIDevice.modelName
     
     let chatMessage = [ Message(messageText: "Hello Pushpsen", userID: "12", avatarURL: "default", messageType: "10", isSelf: false, isGroup: true),
                         Message(messageText: "Hi this is my first text message", userID: "12", avatarURL: "default", messageType: "10", isSelf: true, isGroup: true),
@@ -41,9 +46,14 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Registering Notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         //Function Calling
         self.handleOneOnOneChatVCApperance()
-       
+        self.hideKeyboardWhenTappedAround()
+        
         self.chatView.layer.borderWidth = 1
         self.chatView.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
         self.chatView.layer.cornerRadius = 20.0
@@ -58,10 +68,23 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         //registerCell
         chatTableview.register(ChatTableViewCell.self, forCellReuseIdentifier: cellID)
         chatTableview.separatorStyle = .none
-        
+        chatTableview.allowsSelection = false
         //chatView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         
-        self.hideKeyboardWhenTappedAround()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
     }
     
     
@@ -104,6 +127,16 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         audioCallButton.image =  UIImage.init(named: "audio_call.png")
         audioCallButton.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         
+        //Send button:
+        switch AppAppearance{
+        case .facebook:
+            sendBtn.backgroundColor = UIColor.init(hexFromString: "0084FF")
+        case .whatsapp:
+            sendBtn.backgroundColor = UIColor.init(hexFromString: "0084FF")
+        case .cometchat:
+            sendBtn.backgroundColor = UIColor.init(hexFromString: "2636BE")
+        }
+        
         
         //BuddyAvtar Apperance
     
@@ -127,12 +160,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         buddyName = UILabel(frame: CGRect(x:0,y: 3,width: 150 ,height: 21))
         buddyName.textColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
         buddyName.textAlignment = NSTextAlignment.left
-//       if count(budd) > 40 {
-//
-//            myHeaderBarString = myHeaderBarString.substringToIndex(40)
-//            myHeaderBarString.append("...")
-//
-//        }
+
         buddyName.text = buddyNameString
         buddyName.font = UIFont(name: SystemFont.regular.value, size: 18)
         titleView.addSubview(buddyName)
@@ -168,17 +196,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     }
 
     
-    override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-    }
+ 
     
     @objc func UserAvtarClicked(tapGestureRecognizer: UITapGestureRecognizer)
     {
@@ -211,25 +229,64 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         {
             let keyboardFrame = (userinfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
             
-            self.view.frame.origin.y = -keyboardFrame!.height;
-            print(-keyboardFrame!.height)
+            if(modelName == "iPhone 5" || modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone SE" ){
+                 self.view.frame.origin.y = -keyboardFrame!.height + 60;
+            }else if (modelName == "iPhone 6 Plus" || modelName == "iPhone 6s Plus" || modelName == "iPhone 7 Plus" || modelName == "iPhone 8 Plus"){
+                self.view.frame.origin.y = -keyboardFrame!.height + 60;
+            }else if(modelName == "iPhone XS Max"){
+               self.view.frame.origin.y = -keyboardFrame!.height + 32;
+            }else if (modelName == "iPhone X" || modelName == "iPhone XS") {
+                print("I m in iphone x")
+                self.view.frame.origin.y = -keyboardFrame!.height + 32;
+            }else if(modelName == "iPhone XR"){
+                self.view.frame.origin.y = -keyboardFrame!.height + 32;
+            }else if(modelName == "iPad Pro (12.9-inch) (2nd generation)"){
+                self.view.frame.origin.y = -keyboardFrame!.height + 60;
+            }else{
+                self.view.frame.origin.y = -keyboardFrame!.height + 60;
+            }
+           
         }
         
+       
         
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         print("In keyboardWillHide")
         if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
+            if(modelName == "iPhone 5" || modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone SE" ){
+               self.view.frame.origin.y = 60
+            }else if (modelName == "iPhone 6 Plus" || modelName == "iPhone 6s Plus" || modelName == "iPhone 7 Plus" || modelName == "iPhone 8 Plus"){
+                self.view.frame.origin.y = 60
+            }else if(modelName == "iPhone XS Max"){
+                self.view.frame.origin.y = 32
+            }else if (modelName == "iPhone X" || modelName == "iPhone XS") {
+                print("I m in iphone x")
+                self.view.frame.origin.y = 32
+            }else if(modelName == "iPhone XR"){
+                self.view.frame.origin.y = 32
+            }else if(modelName == "iPad Pro (12.9-inch) (2nd generation)"){
+                self.view.frame.origin.y = 60
+            }else{
+                self.view.frame.origin.y = 60
+            }
         }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         
-        if chatInputView.textColor == UIColor.lightGray {
+        if chatInputView.text != ""{
             chatInputView.text = ""
             chatInputView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+
+        if chatInputView.text == ""{
+            chatInputView.text = "Type a message..."
+            chatInputView.textColor = UIColor.lightGray
         }
     }
     
@@ -244,7 +301,6 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         cell.selectionStyle = .none
         
         let messageData = chatMessage[indexPath.row]
-        
         cell.chatMessage = messageData
         //cell.isIncomingMessage = messageData.isSelf
         return cell
@@ -257,7 +313,36 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
     }
     
-
+    @IBAction func attachementButtonPressed(_ sender: Any) {
+        
+        let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cameraAction: UIAlertAction = UIAlertAction(title: "Camera", style: .default) { action -> Void in
+            
+        }
+        cameraAction.setValue(UIImage(named: "camera.png"), forKey: "image")
+        
+        let photoLibraryAction: UIAlertAction = UIAlertAction(title: "Photo & Video Library", style: .default) { action -> Void in
+            
+        }
+        photoLibraryAction.setValue(UIImage(named: "gallery.png"), forKey: "image")
+        
+        let documentAction: UIAlertAction = UIAlertAction(title: "Document", style: .default) { action -> Void in
+            
+        }
+        documentAction.setValue(UIImage(named: "document.png"), forKey: "image")
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            print("Cancel")
+        }
+        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
+        
+        actionSheetController.addAction(cameraAction)
+        actionSheetController.addAction(photoLibraryAction)
+        actionSheetController.addAction(documentAction)
+        actionSheetController.addAction(cancelAction)
+        present(actionSheetController, animated: true, completion: nil)
+        
+    }
 
 }
 
