@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>Enter API Key</string>
+	<string>ENTER API KEY</string>
 	<key>APP_ID</key>
-	<string>Enter APP ID</string>
+	<string>ENTER APP ID</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -48,7 +48,7 @@
 		<string>Product Sans Italic.ttf</string>
 	</array>
 	<key>UIApperance</key>
-	<string>FacebookUI</string>
+	<string>CometChatUI</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
