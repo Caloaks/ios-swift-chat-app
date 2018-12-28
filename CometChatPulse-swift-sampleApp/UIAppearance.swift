@@ -218,6 +218,18 @@ class UIAppearanceColor{
             return "FFFFFF"
         }
     }()
+    
+    static let RIGHT_BUBBLE_BACKGROUND_COLOR:String = {
+        
+        switch AppAppearance{
+        case .facebook:
+            return "0084FF"
+        case .whatsapp:
+            return "25D366"
+        case .cometchat:
+            return "2636BE"
+        }
+    }()
    
     }
 

@@ -110,12 +110,16 @@ extension UIView {
 
 extension UIView {
     
-     // Specifies roundCorners  function for the UIView. If you call this function for that perticular view then the corner radius will be applied.
-    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        self.layer.mask = mask
+    func roundCorners(_ corners: CACornerMask, radius: CGFloat, borderColor: UIColor, borderWidth: CGFloat, withBackgroundColor: String) {
+        if #available(iOS 11.0, *) {
+            self.layer.maskedCorners = corners
+        } else {
+            // Fallback on earlier versions
+        }
+        self.layer.cornerRadius = radius
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = borderColor.cgColor
+        self.backgroundColor = UIColor.init(hexFromString: withBackgroundColor)
     }
     
 }
