@@ -37,6 +37,7 @@
 		589124DB21B3B2FD003500B5 /* OneOnOneChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589124DA21B3B2FD003500B5 /* OneOnOneChatViewController.swift */; };
 		58C1D1AC21BBDCF900B64915 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D1AB21BBDCF900B64915 /* UserProfileViewController.swift */; };
 		58C1D1AE21BBF0D800B64915 /* UserProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D1AD21BBF0D800B64915 /* UserProfileViewCell.swift */; };
+		7169F45121D9538800A82954 /* ChatVCCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7169F45021D9538800A82954 /* ChatVCCallback.swift */; };
 		71ADB0EB21D375A1002443A7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ADB0EA21D375A1002443A7 /* Message.swift */; };
 		71ADB0ED21D41217002443A7 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ADB0EC21D41216002443A7 /* ChatTableViewCell.swift */; };
 		B22301C121D1FCEC00483CC7 /* UIAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22301C021D1FCEC00483CC7 /* UIAppearance.swift */; };
@@ -90,6 +91,7 @@
 		589124DA21B3B2FD003500B5 /* OneOnOneChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneOnOneChatViewController.swift; sourceTree = "<group>"; };
 		58C1D1AB21BBDCF900B64915 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		58C1D1AD21BBF0D800B64915 /* UserProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewCell.swift; sourceTree = "<group>"; };
+		7169F45021D9538800A82954 /* ChatVCCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVCCallback.swift; sourceTree = "<group>"; };
 		71ADB0EA21D375A1002443A7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		71ADB0EC21D41216002443A7 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		B22301C021D1FCEC00483CC7 /* UIAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAppearance.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				5861795D21BB73AE00829AD3 /* Model */,
 				589124B421B2AC6C003500B5 /* View */,
 				5891249121B2AC6C003500B5 /* Controller */,
+				7169F44F21D9535800A82954 /* Callback */,
 				5891248F21B2AC6C003500B5 /* Resources */,
 				589124AD21B2AC6C003500B5 /* Extensions */,
 			);
@@ -256,6 +259,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7169F44F21D9535800A82954 /* Callback */ = {
+			isa = PBXGroup;
+			children = (
+				7169F45021D9538800A82954 /* ChatVCCallback.swift */,
+			);
+			path = Callback;
+			sourceTree = "<group>";
+		};
 		B2BC608C219DACF9002C24D3 = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +372,7 @@
 				589124BF21B2AC6C003500B5 /* CCTabbar.swift in Sources */,
 				58C1D1AE21BBF0D800B64915 /* UserProfileViewCell.swift in Sources */,
 				589124BB21B2AC6C003500B5 /* RecentNavigationController.swift in Sources */,
+				7169F45121D9538800A82954 /* ChatVCCallback.swift in Sources */,
 				589124C621B2AC6C003500B5 /* EmbeddedViewController.swift in Sources */,
 				71ADB0EB21D375A1002443A7 /* Message.swift in Sources */,
 				71ADB0ED21D41217002443A7 /* ChatTableViewCell.swift in Sources */,

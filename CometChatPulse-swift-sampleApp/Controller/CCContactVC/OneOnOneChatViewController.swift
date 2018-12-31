@@ -33,7 +33,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     let chatMessage = [ Message(messageText: "Hello Pushpsen", userID: "12", avatarURL: "default", messageType: "10", isSelf: false, isGroup: true),
                         Message(messageText: "Hi this is my first text message", userID: "12", avatarURL: "default", messageType: "10", isSelf: true, isGroup: true),
                         Message(messageText: "I want to have a string that is actually very long in length so that I can get a very large string at the o/p", userID: "12", avatarURL: "default", messageType: "10", isSelf: true, isGroup: true),
-                        Message(messageText: "I want to have a string that is actually very long in length so that I can get a very large string at the o/p I want to have a string that is actually very long in length so that I can get a very large string at the o/p", userID: "12", avatarURL: "default", messageType: "10", isSelf: false, isGroup: true),  Message(messageText: "Hi Jeet", userID: "12", avatarURL: "default", messageType: "10", isSelf: false, isGroup: true)
+                        Message(messageText: "I want to have a string that is actually very long in length so that I can get a very large string at the o/p I want to have a string that is actually very long in length so that I can get a very large string at the o/p", userID: "12", avatarURL: "default", messageType: "10", isSelf: false, isGroup: true),  Message(messageText: "Hi Jeet", userID: "12", avatarURL:"String" , messageType: "10", isSelf: false, isGroup: true)
                         ]
     
     
