@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPulseSDK
+import CometChatSDK
 
 class GroupListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource, UISearchBarDelegate{
 

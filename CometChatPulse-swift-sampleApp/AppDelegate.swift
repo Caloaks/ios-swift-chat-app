@@ -7,10 +7,12 @@
 //
 
 import UIKit
-import CometChatPulseSDK
+import  CometChatSDK
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CometChatPulseDelegate,  UISplitViewControllerDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate , CometChatCallDelegate {
+   
+    
 
     var window: UIWindow?
     var cometchat:CometChat!
@@ -25,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CometChatPulseDelegate,  
         }
         
         //Assigning Delegate
-        cometchat.delegate = self
     }
     
     func setupGlobalAppearance(){
@@ -64,6 +65,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CometChatPulseDelegate,  
         return true
     }
     
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        
+        CometChat.startServices()
+        
+    }
     
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -80,18 +86,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CometChatPulseDelegate,  
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func didReceiveMessage(message: BaseMessage?, error: CCException?) {
+    
+    // Calling Delegates
+    
+    func onIncomingCall(aIncomingCall: Call?, error: CCException?) {
+       
+        print("aIncomingCall : \(aIncomingCall)")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
+//        CallingViewController.userAvtarImage = buddyAvtar
+        CallingViewController.callingString = "Incoming Call"
+//        CallingViewController.userNameString = buddyName.text
+        CallingViewController.isAudioCall = true
+        self.window?.rootViewController?.present(CallingViewController, animated: true, completion: nil)
         
     }
     
+    func onCallAccepted(aAcceptedCall: Call?, error: CCException?) {
+        
+    }
+    
+    func onCallRejected(aRejectedCall: Call?, error: CCException?) {
+        
+    }
 
 
 }

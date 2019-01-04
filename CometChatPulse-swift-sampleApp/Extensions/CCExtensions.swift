@@ -427,3 +427,50 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+
+//Blur the Image:
+protocol Bluring {
+    func addBlur(_ alpha: CGFloat)
+}
+
+extension Bluring where Self: UIView {
+    func addBlur(_ alpha: CGFloat = 1.0) {
+        // create effect
+        let effect = UIBlurEffect(style: .prominent)
+        let effectView = UIVisualEffectView(effect: effect)
+        
+        // set boundry and alpha
+        effectView.frame = self.bounds
+        effectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        effectView.alpha = alpha
+        
+        self.addSubview(effectView)
+    }
+}
+
+// Conformance
+extension UIView: Bluring {}
+
+
+
+//Blink Animations
+
+extension UILabel {
+    //MARK: StartBlink
+    func startBlink() {
+        UIView.animate(withDuration: 0.8,//Time duration
+            delay:0.0,
+            options:[.allowUserInteraction, .curveEaseInOut, .autoreverse, .repeat],
+            animations: { self.alpha = 0 },
+            completion: nil)
+    }
+    
+    //MARK: StopBlink
+    func stopBlink() {
+        layer.removeAllAnimations()
+        alpha = 1
+    }
+}
+
+

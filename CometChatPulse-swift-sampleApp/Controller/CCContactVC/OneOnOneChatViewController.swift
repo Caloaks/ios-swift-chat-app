@@ -17,11 +17,14 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var chatInputView: UITextView!
     @IBOutlet weak var chatTableview: UITableView!
+    
+    
     //Outlets Declarations
     @IBOutlet weak var videoCallBtn: UIBarButtonItem!
     @IBOutlet weak var audioCallButton: UIBarButtonItem!
     
     // Variable Declarations
+    var buddyUID:String!
     var buddyNameString:String!
     var buddyStatusString:String!
     //var buddyAvtar:String!
@@ -37,8 +40,6 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
                         ]
     
     
-    
-    
     fileprivate let cellID = "chatCell"
 //    let chatMessages = ["Hi this is my first text message", "I want to have a string that is actually very long in length so that I can get a very large string at the o/p", "I want to have a string that is actually very long in length so that I can get a very large string at the o/p I want to have a string that is actually very long in length so that I can get a very large string at the o/p","Hi Jeet"]
     
@@ -46,6 +47,8 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("UID is: \(String(describing: buddyUID))")
+        
         //Registering Notifications
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -344,5 +347,26 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
     }
 
+    @IBAction func audioCallPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
+        CallingViewController.userAvtarImage = buddyAvtar
+        CallingViewController.callingString = "Calling ..."
+        CallingViewController.userNameString = buddyName.text
+        CallingViewController.isAudioCall = true
+        self.present(CallingViewController, animated: true, completion: nil)
+        
+    }
+    @IBAction func videoCallPressed(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
+        CallingViewController.userAvtarImage = buddyAvtar
+        CallingViewController.userNameString = buddyName.text
+        CallingViewController.callingString = "Calling ..."
+        CallingViewController.isAudioCall = false
+        self.present(CallingViewController, animated: true, completion: nil)
+        
+    }
 }
 

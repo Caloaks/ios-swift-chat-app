@@ -8,9 +8,10 @@
 
 import UIKit
 
-class MoreSettingsViewController: UIViewController {
+class MoreSettingsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource  {
 
     //Outlets Declarations
+      @IBOutlet weak var moreSettingsTableView: UITableView!
     
     //Variable Declarations
     
@@ -51,5 +52,21 @@ class MoreSettingsViewController: UIViewController {
         backBTN.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_BUTTON_TINT_COLOR)
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
 
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "moreSettingsCell", for: indexPath) as! MoreSettingTableViewCell
+        cell.settingsLabel.text = "dedd"
+        
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4;
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 60
     }
 }

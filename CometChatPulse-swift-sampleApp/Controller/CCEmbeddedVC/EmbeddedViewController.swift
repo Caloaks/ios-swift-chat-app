@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPulseSDK
+import CometChatSDK
 
 class EmbeddedViewController: UIViewController {
 

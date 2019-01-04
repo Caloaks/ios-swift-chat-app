@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import CometChatPulseSDK
+import CometChatSDK
 
-class LoginViewController: UIViewController, CometChatPulseDelegate ,UITextFieldDelegate {
+class LoginViewController: UIViewController ,UITextFieldDelegate {
     
     //Outlets Declaration
     @IBOutlet weak var bottomViewTop: NSLayoutConstraint!
@@ -116,9 +116,6 @@ class LoginViewController: UIViewController, CometChatPulseDelegate ,UITextField
     }
 
     
-    func didReceiveMessage(message: BaseMessage?, error: CCException?) {
-        
-    }
     
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import CometChatPulseSDK
-class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , CometChatPulseDelegate, UISearchBarDelegate{
+import CometChatSDK
+class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , UISearchBarDelegate{
     
     //Outlets Declarations
     @IBOutlet weak var oneOneOneTableView: UITableView!
@@ -177,6 +177,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         
          //User Status:
         cell.buddyStatus.text = buddyData.status
+        cell.UID = buddyData.uid
         
         //User status Icon:
         if(buddyData.status == "offline"){
@@ -234,6 +235,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell:OneOnOneTableViewCell = tableView.cellForRow(at: indexPath) as! OneOnOneTableViewCell
        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let oneOnOneChatViewController = storyboard.instantiateViewController(withIdentifier: "oneOnOneChatViewController") as! OneOnOneChatViewController
+        oneOnOneChatViewController.buddyUID = selectedCell.UID
         oneOnOneChatViewController.buddyStatusString = selectedCell.buddyStatus.text
         oneOnOneChatViewController.buddyAvtar = selectedCell.buddyAvtar.image
         oneOnOneChatViewController.buddyNameString = selectedCell.buddyName.text

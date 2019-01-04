@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5861795F21BB8D2200829AD3 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		589124B921B2AC6C003500B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5891249021B2AC6C003500B5 /* Assets.xcassets */; };
 		589124BA21B2AC6C003500B5 /* MoreSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891249321B2AC6C003500B5 /* MoreSettingsViewController.swift */; };
 		589124BB21B2AC6C003500B5 /* RecentNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891249521B2AC6C003500B5 /* RecentNavigationController.swift */; };
@@ -39,10 +38,13 @@
 		58C1D1AE21BBF0D800B64915 /* UserProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D1AD21BBF0D800B64915 /* UserProfileViewCell.swift */; };
 		71ADB0EB21D375A1002443A7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ADB0EA21D375A1002443A7 /* Message.swift */; };
 		71ADB0ED21D41217002443A7 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ADB0EC21D41216002443A7 /* ChatTableViewCell.swift */; };
+		B220598E21DF6EB7002F3C7F /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = B220598D21DF6EB7002F3C7F /* Call.swift */; };
 		B22301C121D1FCEC00483CC7 /* UIAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22301C021D1FCEC00483CC7 /* UIAppearance.swift */; };
 		B22301C421D26B8000483CC7 /* Product Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22301C221D2659C00483CC7 /* Product Sans Regular.ttf */; };
 		B22301C521D26B8300483CC7 /* Product Sans Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22301C321D265A600483CC7 /* Product Sans Bold.ttf */; };
 		B22301C721D271EF00483CC7 /* Product Sans Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22301C621D271EA00483CC7 /* Product Sans Italic.ttf */; };
+		B2753A3521DD0554004D895F /* CallingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2753A3421DD0554004D895F /* CallingViewController.swift */; };
+		B2BB032721DF374500B2479D /* MoreSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB032621DF374500B2479D /* MoreSettingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,7 +54,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5861795F21BB8D2200829AD3 /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,10 +93,13 @@
 		58C1D1AD21BBF0D800B64915 /* UserProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewCell.swift; sourceTree = "<group>"; };
 		71ADB0EA21D375A1002443A7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		71ADB0EC21D41216002443A7 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		B220598D21DF6EB7002F3C7F /* Call.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
 		B22301C021D1FCEC00483CC7 /* UIAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAppearance.swift; sourceTree = "<group>"; };
 		B22301C221D2659C00483CC7 /* Product Sans Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Regular.ttf"; sourceTree = "<group>"; };
 		B22301C321D265A600483CC7 /* Product Sans Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Bold.ttf"; sourceTree = "<group>"; };
 		B22301C621D271EA00483CC7 /* Product Sans Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Italic.ttf"; sourceTree = "<group>"; };
+		B2753A3421DD0554004D895F /* CallingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingViewController.swift; sourceTree = "<group>"; };
+		B2BB032621DF374500B2479D /* MoreSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreSettingTableViewCell.swift; sourceTree = "<group>"; };
 		B2BC6095219DACF9002C24D3 /* CometChatPulse-swift-sampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CometChatPulse-swift-sampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -115,6 +119,7 @@
 			children = (
 				589124D621B2E7D0003500B5 /* FetchData.swift */,
 				71ADB0EA21D375A1002443A7 /* Message.swift */,
+				B220598D21DF6EB7002F3C7F /* Call.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 				589124A421B2AC6C003500B5 /* CCContactVC */,
 				589124A821B2AC6C003500B5 /* CCTabBarVC */,
 				589124AA21B2AC6C003500B5 /* CCProfileVC */,
+				B2753A3121DD04B5004D895F /* CallingVC */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -163,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				5891249321B2AC6C003500B5 /* MoreSettingsViewController.swift */,
+				B2BB032621DF374500B2479D /* MoreSettingTableViewCell.swift */,
 			);
 			path = CCMoreSettingsVC;
 			sourceTree = "<group>";
@@ -256,12 +263,28 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B2753A3121DD04B5004D895F /* CallingVC */ = {
+			isa = PBXGroup;
+			children = (
+				B2753A3421DD0554004D895F /* CallingViewController.swift */,
+			);
+			path = CallingVC;
+			sourceTree = "<group>";
+		};
+		B2BB031921DF320000B2479D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B2BC608C219DACF9002C24D3 = {
 			isa = PBXGroup;
 			children = (
 				5891248E21B2AC6C003500B5 /* CometChatPulse-swift-sampleApp */,
 				584900AC21B2AA7C009BB669 /* Info.plist */,
 				B2BC6096219DACF9002C24D3 /* Products */,
+				B2BB031921DF320000B2479D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -349,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				589124C921B2AC6C003500B5 /* ContactsNavigationController.swift in Sources */,
+				B220598E21DF6EB7002F3C7F /* Call.swift in Sources */,
 				589124C121B2AC6C003500B5 /* CustomLaunchViewController.swift in Sources */,
 				589124D021B2AC6C003500B5 /* CCExtensions.swift in Sources */,
 				589124CC21B2AC6C003500B5 /* AppDelegate.swift in Sources */,
@@ -376,7 +400,9 @@
 				589124C821B2AC6C003500B5 /* OneOnOneListViewController.swift in Sources */,
 				589124BA21B2AC6C003500B5 /* MoreSettingsViewController.swift in Sources */,
 				589124DB21B3B2FD003500B5 /* OneOnOneChatViewController.swift in Sources */,
+				B2BB032721DF374500B2479D /* MoreSettingTableViewCell.swift in Sources */,
 				589124C321B2AC6C003500B5 /* CreateGroupcontroller.swift in Sources */,
+				B2753A3521DD0554004D895F /* CallingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,18 +547,16 @@
 		B2BC60A8219DACFA002C24D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K456T8RD7Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CometChatUI",
-					"$(PROJECT_DIR)/CometChatUI/Model",
-					"$(PROJECT_DIR)/CCPulse-CometChatUI-ios-master/Model",
-					"$(PROJECT_DIR)/Pods/CometChatPulseSDK",
-					"$(PROJECT_DIR)/CometChatPulse-swift-sampleApp",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/CometChatSDK.framework/Frameworks",
+					"$(PROJECT_DIR)/CometChatPulse-swift-sampleApp",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
@@ -550,18 +574,16 @@
 		B2BC60A9219DACFA002C24D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K456T8RD7Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CometChatUI",
-					"$(PROJECT_DIR)/CometChatUI/Model",
-					"$(PROJECT_DIR)/CCPulse-CometChatUI-ios-master/Model",
-					"$(PROJECT_DIR)/Pods/CometChatPulseSDK",
-					"$(PROJECT_DIR)/CometChatPulse-swift-sampleApp",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/CometChatSDK.framework/Frameworks",
+					"$(PROJECT_DIR)/CometChatPulse-swift-sampleApp",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
