@@ -7,10 +7,8 @@
 </br>
 </br>
 </div>
-<br>
 
-
-CometChat-Pulse iOS Demo app made using CometChat-Pulse iOS SDK is a fully functional messaging app capable of **OnetoOne** and **Group** messaging.OnetoOne and Group messaging allows you to send **text** and various **multimedia messages like audio,video,images,documents etc..**
+CometChat iOS Demo app made using CometChatSDK is a fully functional messaging app capable of **OnetoOne** and **Group** messaging.OnetoOne and Group messaging allows you to send **text** and various **multimedia messages like audio,video,images,documents etc..**
 
 [![Platform](https://img.shields.io/badge/platform-iOS-orange.svg)](https://cocoapods.org/pods/CometChatPulseSDK)
 [![Languages](https://img.shields.io/badge/language-Swift-orange.svg)](https://github.com/CometChat-Pulse/ios-swift-chat-app)
@@ -60,12 +58,12 @@ Add below into your Podfile on Xcode.
 ```
 target 'CometChatPulse-swift-sampleApp' do
   
-	pod 'CometChatPulseSDK'
+	pod 'CometChatSDK'
 
 end
 ```
 
-Install CometChatPulseSDK Framework through CocoaPods.
+Install CometChatSDK Framework through CocoaPods.
 
 ```
 pod install
@@ -76,7 +74,7 @@ Once the pod is installed. Update the pods to install latest SDK inside your pro
 pod update
 ```
 
-Now you can see installed CometChatPulseSDK framework by inspecting CometChatPulse-swift-sampleApp.xcworkspace.   
+Now you can see installed CometChatSDK framework by inspecting CometChatPulse-swift-sampleApp.xcworkspace.   
    
    
 
