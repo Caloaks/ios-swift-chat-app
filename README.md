@@ -2,12 +2,12 @@
 <div style="width:100%">
 	<div style="width:50%; display:inline-block">
 		<h1> CometChatPulse </h1> 
-		<img align="left" width="150" height="150" alt="CometChat Pulse" src="https://github.com/CometChat-Pulse/javascript-chat-sdk/blob/master/CometChat%20Pulse%20Logo.png">		
+		<img align="center" alt="CometChat Pulse" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/pro.png">		
 	</div>	
 </div>
 </br>
 </br>
-<h2> The Most Prominent Voice, Video and Text Chat App</h2>
+<h2 align="center">The Most Prominent Voice, Video and Text Chat App</center></h2>
 
 </div>
 <br>
