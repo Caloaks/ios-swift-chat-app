@@ -1,7 +1,6 @@
 
 <div style="width:100%">
 	<div style="width:50%; display:inline-block">
-		<h1> CometChatPulse </h1> 
 		<img align="center" alt="CometChat Pulse" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/pro.png">		
 	</div>	
 </div>
@@ -11,6 +10,7 @@
 
 </div>
 <br>
+
 
 CometChat-Pulse iOS Demo app made using CometChat-Pulse iOS SDK is a fully functional messaging app capable of **OnetoOne** and **Group** messaging.OnetoOne and Group messaging allows you to send **text** and various **multimedia messages like audio,video,images,documents etc..**
 
