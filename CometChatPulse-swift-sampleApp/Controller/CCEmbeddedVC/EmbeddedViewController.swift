@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPulseSDK
+import CometChatSDK
 
 class EmbeddedViewController: UIViewController {
 
@@ -42,7 +42,7 @@ class EmbeddedViewController: UIViewController {
             
             guard groupList != nil else
             {
-                print(error!.errordescription)
+                print(error!.ErrorDescription)
                 return
             }
             for group in groupList! {
@@ -59,12 +59,11 @@ class EmbeddedViewController: UIViewController {
         // This Method fetch the users from the Server.
         usersArray = Array<User>()
         
-        
         fetchData_().fetchUsers { (users, error) in
             
             guard users != nil else
             {
-                print(error!.errordescription)
+                print(error!.ErrorDescription)
                 return
             }
             for user in users! {

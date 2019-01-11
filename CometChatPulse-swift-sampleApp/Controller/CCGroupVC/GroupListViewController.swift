@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPulseSDK
+import CometChatSDK
 
 class GroupListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource, UISearchBarDelegate{
 
@@ -84,7 +84,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             
             guard let groupListReceived = groupList else
             {
-                print(error!.errordescription)
+                print(error!.ErrorDescription)
                 return
             }
             for group in groupList! {

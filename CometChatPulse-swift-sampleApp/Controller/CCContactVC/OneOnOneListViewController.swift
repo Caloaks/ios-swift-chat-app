@@ -7,8 +7,21 @@
 //
 
 import UIKit
-import CometChatPulseSDK
-class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , CometChatPulseDelegate, UISearchBarDelegate{
+import CometChatSDK
+class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , CometChatUserEventDelegate, UISearchBarDelegate{
+    
+    func onUserOnline(user: User) {
+        
+        
+        
+    }
+    
+    func onUserOffline(user: User) {
+        
+        
+        
+    }
+    
     
     //Outlets Declarations
     @IBOutlet weak var oneOneOneTableView: UITableView!
@@ -34,7 +47,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         
         //Memory Allocation
         getUserArray = [User]()
-        
+        CometChat.userEventdelegate = self
         
          //Triggering Notifications
         DispatchQueue.global().async {
@@ -66,7 +79,11 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         
         print("CallingFetchUsers")
         getUserArray = (notification.userInfo!["usersData"] as! Array<User>)
-        self.oneOneOneTableView.reloadData()
+        
+        DispatchQueue.main.async() {
+            self.oneOneOneTableView.reloadData()
+        }
+        
     }
     
     
@@ -177,7 +194,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         
          //User Status:
         cell.buddyStatus.text = buddyData.status
-        
+        cell.UID = buddyData.uid
         //User status Icon:
         if(buddyData.status == "offline"){
             cell.buddyStatusIcon.backgroundColor = UIColor.init(hexFromString: "808080")
@@ -204,7 +221,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
 
                 guard users != nil else
                 {
-                    print(error!.errordescription)
+                    print(error!.ErrorDescription)
                     return
                 }
                 for user in users! {
@@ -212,7 +229,11 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
                     print("getUserArray:\(user)")
                     print("getUserArray: \(String(describing: users))")
                 }
-                self.oneOneOneTableView.reloadData()
+                DispatchQueue.main.async() {
+                    self.oneOneOneTableView.reloadData()
+                }
+                
+                
             }
         }
     }
@@ -237,6 +258,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         oneOnOneChatViewController.buddyStatusString = selectedCell.buddyStatus.text
         oneOnOneChatViewController.buddyAvtar = selectedCell.buddyAvtar.image
         oneOnOneChatViewController.buddyNameString = selectedCell.buddyName.text
+    oneOnOneChatViewController.buddyUID = selectedCell.UID
     
   // self.performSegue(withIdentifier: "showDetail", sender: self)
         navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
@@ -338,7 +360,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 
     
-    func didReceiveMessage(message: BaseMessage?, error: CCException?) {
+    func didReceiveMessage(message: BaseMessage?, error: CometChatException?) {
         
     }
 

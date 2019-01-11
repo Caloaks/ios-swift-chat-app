@@ -27,7 +27,7 @@ class ChatTableViewCell: UITableViewCell {
         didSet{
 
             messageLabel.text = chatMessage.messageText
-            messageTimeLabel.text = "01:11"
+            messageTimeLabel.text = chatMessage.time
             
             if(chatMessage.isSelf){
                 
@@ -68,6 +68,8 @@ class ChatTableViewCell: UITableViewCell {
                 trailingConstraint.isActive = false
                 timeLabelTrailingConstraint.isActive = false
                 timeLabelLeadingConstraint.isActive = true
+                
+                userAvatarImageView.isHidden = false
                 
                 switch AppAppearance{
                     

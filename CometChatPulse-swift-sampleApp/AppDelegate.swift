@@ -7,10 +7,62 @@
 //
 
 import UIKit
-import CometChatPulseSDK
+import CometChatSDK
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CometChatPulseDelegate,  UISplitViewControllerDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate, CometChatUserEventDelegate, CometChatCallDelegate, CometChatMessageDelegate, CometChatGroupEventDelegate,  UISplitViewControllerDelegate{
+    func onUserOnline(user: User) {
+        
+    }
+    
+    func onUserOffline(user: User) {
+        
+    }
+    
+    func onIncomingCall(incomingCall: Call?, error: CometChatException?) {
+        
+    }
+    
+    func onCallAccepted(acceptedCall: Call?, error: CometChatException?) {
+        
+    }
+    
+    func onCallRejected(rejectedCall: Call?, error: CometChatException?) {
+        
+    }
+    
+    func onTextMessageReceived(textMessage: TextMessage?, error: CometChatException?) {
+        
+    }
+    
+    func onMediaMessageReceived(mediaMessage: MediaMessage?, error: CometChatException?) {
+        
+    }
+    
+    func onUserJoined(joinedUser: User, joinedGroup: Group) {
+        
+    }
+    
+    func onUserLeft(leftUser: User, leftGroup: Group) {
+        
+    }
+    
+    func onUserKicked(kickedUser: User, kickedBy: User, kickedFrom: Group) {
+        
+    }
+    
+    func onUserBanned(bannedUser: User, bannedBy: User, bannedFrom: Group) {
+        
+    }
+    
+    func onUserUnbanned(unbannedUser: User, unbannedBy: User, unbannedFrom: Group) {
+        
+    }
+    
+    func onMemberScopeChanged(user: User, scopeChangedTo: String, scopeChangedFrom: String, group: Group) {
+        
+    }
+    
 
     var window: UIWindow?
     var cometchat:CometChat!
@@ -20,12 +72,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CometChatPulseDelegate,  
         
         let App_ID:String = Bundle.main.infoDictionary?["APP_ID"] as! String
         
-        cometchat = CometChat(appId:App_ID ) { (error) in
+//        cometchat = CometChat(appId:App_ID, onSuccess: <#(Bool) -> Void#> ) { (error) in
+//            print("error is : \(error)")
+//        }
+        
+        CometChat(appId: App_ID, onSuccess: { (Success) in
+           print("Success ")
+        }) { (error) in
             print("error is : \(error)")
         }
         
         //Assigning Delegate
-        cometchat.delegate = self
+        
+        CometChat.calldelegate = self
+        CometChat.messagedelegate = self
+        CometChat.userEventdelegate = self
+        CometChat.groupEventdelegate = self
     }
     
     func setupGlobalAppearance(){
@@ -88,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CometChatPulseDelegate,  
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func didReceiveMessage(message: BaseMessage?, error: CCException?) {
+    func didReceiveMessage(message: BaseMessage?, error: CometChatException?) {
         
     }
     

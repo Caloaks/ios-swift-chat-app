@@ -7,8 +7,41 @@
 //
 
 import UIKit
+import CometChatSDK
 
-class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource {
+class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource,CometChatMessageDelegate {
+    
+    
+    func onTextMessageReceived(textMessage: TextMessage?, error: CometChatException?) {
+     
+        var messageDict = [String : Any]()
+        
+        messageDict["messageText"] = textMessage!.text
+        messageDict["isSelf"] = false
+        messageDict["time"] = "01:11"
+        messageDict["messageType"] = "text"
+        messageDict["isGroup"] = false
+        print("\(String(describing: textMessage!.metaData))")
+        
+        let receivedMessage = Message(dict: messageDict)
+        self.chatMessage.append(receivedMessage!)
+        
+        DispatchQueue.main.async{
+            self.chatTableview.beginUpdates()
+            self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
+            
+            self.chatTableview.endUpdates()
+            self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+        }
+        
+    }
+    
+    func onMediaMessageReceived(mediaMessage: MediaMessage?, error: CometChatException?) {
+        
+        
+        
+    }
+    
     
     @IBOutlet weak var attachmentBtn: UIButton!
     @IBOutlet weak var ChatViewBottomconstraint: NSLayoutConstraint!
@@ -24,18 +57,20 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     // Variable Declarations
     var buddyNameString:String!
     var buddyStatusString:String!
+    var buddyUID:String!
     //var buddyAvtar:String!
     var buddyAvtar:UIImage!
     var buddyName:UILabel!
     var buddyStatus:UILabel!
     let modelName = UIDevice.modelName
     
-    let chatMessage = [ Message(messageText: "Hello Pushpsen", userID: "12", avatarURL: "default", messageType: "10", isSelf: false, isGroup: true),
-                        Message(messageText: "Hi this is my first text message", userID: "12", avatarURL: "default", messageType: "10", isSelf: true, isGroup: true),
-                        Message(messageText: "I want to have a string that is actually very long in length so that I can get a very large string at the o/p", userID: "12", avatarURL: "default", messageType: "10", isSelf: true, isGroup: true),
-                        Message(messageText: "I want to have a string that is actually very long in length so that I can get a very large string at the o/p I want to have a string that is actually very long in length so that I can get a very large string at the o/p", userID: "12", avatarURL: "default", messageType: "10", isSelf: false, isGroup: true),  Message(messageText: "Hi Jeet", userID: "12", avatarURL:"String" , messageType: "10", isSelf: false, isGroup: true)
-                        ]
+//    var chatMessage = [ Message(messageText: "Hello Pushpsen", userID: "12", avatarURL: "default", messageType: "10", isSelf: false, isGroup: true, time:"01:11"),
+//                        Message(messageText: "Hi this is my first text message", userID: "12", avatarURL: "default", messageType: "10", isSelf: true, isGroup: true, time:"01:11"),
+//                        Message(messageText: "I want to have a string that is actually very long in length so that I can get a very large string at the o/p", userID: "12", avatarURL: "default", messageType: "10", isSelf: true, isGroup: true, time:"01:11"),
+//                        Message(messageText: "I want to have a string that is actually very long in length so that I can get a very large string at the o/p I want to have a string that is actually very long in length so that I can get a very large string at the o/p", userID: "12", avatarURL: "default", messageType: "10", isSelf: false, isGroup: true, time:"01:11"),  Message(messageText: "Hi Jeet", userID: "12", avatarURL:"String" , messageType: "10", isSelf: false, isGroup: true, time:"01:11")
+//                        ]
     
+    var chatMessage = [Message]()
     
     
     
@@ -70,6 +105,15 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         chatTableview.separatorStyle = .none
         chatTableview.allowsSelection = false
         //chatView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        
+        ChatVCCallbacks_().fetchUserMessages(userUID: buddyUID) { (message, error) in
+            
+            let messages = message?.messages
+            self.chatMessage = messages!
+            DispatchQueue.main.async{
+                self.chatTableview.reloadData()
+            }
+        }
         
         
     }
@@ -195,9 +239,6 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
     }
 
-    
- 
-    
     @objc func UserAvtarClicked(tapGestureRecognizer: UITapGestureRecognizer)
     {
         
@@ -310,7 +351,22 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     
     @IBAction func sendButton(_ sender: Any) {
         print(chatInputView.text!)
-        
+
+        ChatVCCallbacks_().sendTextMessage(toUserUID: buddyUID, message: chatInputView.text) { (message, error) in
+            
+            print("here the message is \(String(describing: message?.messages))")
+            let sendMessage =  message?.messages
+            self.chatMessage.append(sendMessage!)
+            
+            DispatchQueue.main.async{
+                self.chatTableview.beginUpdates()
+                self.chatTableview.insertRows(at: [IndexPath.init(row: self.chatMessage.count-1, section: 0)], with: .automatic)
+                
+                self.chatTableview.endUpdates()
+                self.chatTableview.scrollToRow(at: IndexPath.init(row: self.chatMessage.count-1, section: 0), at: UITableViewScrollPosition.none, animated: true)
+            }
+        }
+
     }
     
     @IBAction func attachementButtonPressed(_ sender: Any) {

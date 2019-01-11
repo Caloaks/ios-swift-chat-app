@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import CometChatPulseSDK
+import CometChatSDK
 
 
 class fetchData_ {
@@ -16,19 +16,21 @@ class fetchData_ {
     private var userRequest:UsersRequest!
     private var groupRequest:GroupsRequest!
     
-    public typealias userResponse = (_ user:[User]? , _ error:CCException?) ->Void
-    public typealias groupResponse = (_ group:[Group]? , _ error:CCException?) ->Void
+    public typealias userResponse = (_ user:[User]? , _ error:CometChatException?) ->Void
+    public typealias groupResponse = (_ group:[Group]? , _ error:CometChatException?) ->Void
     
     func fetchUsers(completionHandler:@escaping userResponse) {
-        
-        userRequest = UsersRequest.UsersRequestBuilder(limit: 60).build()
-        
+        print("heere 11")
+        userRequest = UsersRequest.UsersRequestBuilder(limit: 10).build()
+        print("heere 22")
         userRequest.fetchNext { (users, error) in
-            
+            print("heere 33")
             guard let usersArray = users else {
+                print("heere 44")
                 completionHandler(nil,error)
                 return
             }
+            print("heere 55")
             completionHandler(usersArray,nil)
             
         }

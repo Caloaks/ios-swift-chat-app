@@ -8,30 +8,77 @@
 
 import Foundation
 
-import CometChatPulseSDK
-let uid = "SUPERHERO2"
-let text = "Hello"
+import CometChatSDK
 
-let data = [Message].self
-
-func initCallback()->Void{
+class ChatVCCallbacks_{
     
-    let textMessage = TextMessage(receiverUid: uid, text: text, messageType: .text, receiverType: .user)
+    private var userMessageRequest:UserMessagesRequest!
+    private var groupMessageRequest:GroupMembersRequest!
     
-    CometChat.sendTextMessage(message: textMessage, onSuccess: { (message) in
+    public typealias sendMessageResponse = (_ success:getSendMessageResponse? , _ error:CometChatException?) -> Void
+    
+    public typealias usermessageResponse = (_ user:getMessageResponse? , _ error:CometChatException?) ->Void
+    public typealias groupmessageResponse = (_ group:[BaseMessage]? , _ error:CometChatException?) ->Void
+    
+    func fetchUserMessages(userUID: String, completionHandler:@escaping usermessageResponse) {
         
-        // success
-        // e.g
-        // let sentMessage = (message as? TextMessage);
-        // sentMessage?.text
+        userMessageRequest = UserMessagesRequest.UserMessagesRequestBuilder(fromUID: userUID).setLimit(limit: 20).build()
         
-    }) { (error) in
+        userMessageRequest.fetchPrevious { (messages, error) in
+            
+            guard let usersMessagesArray = messages else {
+                completionHandler(nil,error)
+                return
+            }
+            print("here the array is \(usersMessagesArray)")
+            
+            do {
+                let response = try getMessageResponse(myMessageData: usersMessagesArray)
+                completionHandler(response, nil)
+            } catch {}
         
-        // error
-        // e.g error!.errordescription
+    }
     }
     
+    func sendTextMessage(toUserUID: String, message : String ,completionHandler:@escaping sendMessageResponse){
+        
+        let textMessage = TextMessage(receiverUid: toUserUID, text: message, messageType: .text, receiverType: .user)
+        
+        CometChat.sendTextMessage(message: textMessage, onSuccess: { (message) in
+            
+            do {
+                let response = try getSendMessageResponse(myMessageData: message)
+                completionHandler(response, nil)
+            } catch {}
+
+            
+        }) { (error) in
+            
+            completionHandler(nil,error)
+            
+        }
+        
+    }
+    
+    
 }
+
+
+
+
+//func getMessage(forUID : String) -> Array<Any> {
+//
+//    let messagelist = UserMessagesRequest.UserMessagesRequestBuilder(fromUID: forUID).setLimit(limit: 20).build()
+//
+//    messagelist.fetchPrevious { (messages, error) in
+//
+//        if error != nil { // Error
+//            return
+//        }
+//    }
+//
+//
+//}
 
 // *** STEP 4:.confirming to a protocol
 
