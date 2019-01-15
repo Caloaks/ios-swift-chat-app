@@ -16,12 +16,22 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
      
         var messageDict = [String : Any]()
         
+        let date = Date(timeIntervalSince1970: TimeInterval(textMessage!.sentAt))
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "HH:mm a"
+        
+        dateFormatter1.timeZone = NSTimeZone.local
+        let dateString : String = dateFormatter1.string(from: date)
+        print("formatted date is =  \(dateString)")
+        
+        messageDict["userID"] = textMessage!.receiverUid
         messageDict["messageText"] = textMessage!.text
         messageDict["isSelf"] = false
-        messageDict["time"] = "01:11"
+        messageDict["time"] = dateString
         messageDict["messageType"] = "text"
         messageDict["isGroup"] = false
-        print("\(String(describing: textMessage!.metaData))")
+        messageDict["avatarURL"] = ""
+        print("MessageDict \(messageDict)")
         
         let receivedMessage = Message(dict: messageDict)
         self.chatMessage.append(receivedMessage!)
@@ -99,7 +109,7 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
         chatTableview.delegate = self
         chatTableview.dataSource = self
-        
+        CometChat.messagedelegate = self
         //registerCell
         chatTableview.register(ChatTableViewCell.self, forCellReuseIdentifier: cellID)
         chatTableview.separatorStyle = .none

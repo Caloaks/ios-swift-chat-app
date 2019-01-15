@@ -79,10 +79,9 @@ struct getSendMessageResponse {
                 print("here the receiverUID \(myMessageData.receiverUid)")
                 print("here the user is \(String(describing: myMessageData.sender))")
                 
-                
                 let date = Date(timeIntervalSince1970: TimeInterval(myMessageData.sentAt))
                 let dateFormatter1 = DateFormatter()
-                dateFormatter1.dateFormat = "HH:mm:a"
+                dateFormatter1.dateFormat = "HH:mm a"
                 
                 dateFormatter1.timeZone = NSTimeZone.local
                 let dateString : String = dateFormatter1.string(from: date)
