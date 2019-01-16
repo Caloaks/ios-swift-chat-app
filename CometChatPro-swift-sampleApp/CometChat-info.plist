@@ -5,12 +5,12 @@
 	<key>Authentication</key>
 	<dict>
 		<key>API_KEY</key>
-		<string>API KEY</string>
+		<string>ENTER API KEY</string>
 		<key>APP_ID</key>
-		<string>APP ID</string>
+		<string>ENTER APP ID</string>
 	</dict>
 	<key>UIApperance</key>
-	<string>PersianBlue</string>
+	<string>Custom</string>
 	<key>UIAppearanceFont</key>
 	<dict>
 		<key>regular</key>
