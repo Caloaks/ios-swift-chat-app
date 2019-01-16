@@ -49,48 +49,25 @@ CometChat iOS Demo app made using CometChatSDK is a fully functional messaging a
 # Installtion 
 ### Note : This project is under progress.
       
-   Simply Clone the project from iOS-swift-chat-app repository. Install the CometChatPulseSDK inside your project.
+   Simply Clone the project from iOS-swift-chat-app repository. Manually download the CometChatPro SDK from below link and manually add it in the project.
    
-## Install CometChatPulseSDK Framework in  your project
+   https://github.com/cometchat-pro/ios-chat-sdk
+ <br></br>  
 
-Add below into your Podfile on Xcode.
-
-```
-target 'CometChatPulse-swift-sampleApp' do
-  
-	pod 'CometChatSDK'
-
-end
-```
-
-Install CometChatSDK Framework through CocoaPods.
-
-```
-pod install
-```
-Once the pod is installed. Update the pods to install latest SDK inside your project using below command. 
-
-```
-pod update
-```
-
-Now you can see installed CometChatSDK framework by inspecting CometChatPulse-swift-sampleApp.xcworkspace.   
-   
-   
 
 # Running the sample app
 
-
-   
    To Run to sample App you have to do the following changes by Adding **ApiKey** and **AppId**
+   
+    You can Obtain your  *APP_ID* and *API_KEY* from [CometChat-Pulse Dashboard](https://app.cometchat.com/#/login)
           
    - Open the Project in Xcode. 
           
-   - Go to Under CometChatPulse-swift-sampleApp -->  Info.plist
+   - Go to Under CometChatPro-swift-sampleApp -->  CometChat-info.plist
                   
-   -  modify *APP_ID* and *API_KEY* with your own **API_KEY** and **APP_ID**
+   - Under Authentication section, modify *APP_ID* and *API_KEY* with your own **API_KEY** and **APP_ID**
    
- ![Studio Guide](https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/PULSE_001/Screenshots/Authentication.png)    
+ ![Studio Guide](https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/Auth.png)    
      
    - Enter the **UID** in Login page. Proceed.
     
@@ -98,7 +75,7 @@ Now you can see installed CometChatSDK framework by inspecting CometChatPulse-sw
 ### Note    
 
 
-   You can Obtain your  *APP_ID* and *API_KEY* from [CometChat-Pulse Dashboard](https://app.cometchat.com/#/login)
+  
    
    For more information read [ios-chat-sdk](https://github.com/CometChat-Pulse/ios-chat-sdk) Documentation
     
