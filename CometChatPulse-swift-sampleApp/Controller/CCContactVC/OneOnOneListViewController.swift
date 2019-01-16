@@ -259,7 +259,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         oneOnOneChatViewController.buddyAvtar = selectedCell.buddyAvtar.image
         oneOnOneChatViewController.buddyNameString = selectedCell.buddyName.text
     oneOnOneChatViewController.buddyUID = selectedCell.UID
-    
+    oneOnOneChatViewController.isGroup = "1"
   // self.performSegue(withIdentifier: "showDetail", sender: self)
         navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
     }

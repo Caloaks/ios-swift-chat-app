@@ -14,7 +14,7 @@ class GroupTableViewCell: UITableViewCell {
     @IBOutlet weak var groupAvtar: UIImageView!
     @IBOutlet weak var groupName: UILabel!
     @IBOutlet weak var groupParticipants: UILabel!
-    
+    var UID:String!
     
     override func awakeFromNib() {
         super.awakeFromNib()

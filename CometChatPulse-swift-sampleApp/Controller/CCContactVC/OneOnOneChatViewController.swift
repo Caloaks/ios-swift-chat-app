@@ -24,12 +24,21 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         let dateString : String = dateFormatter1.string(from: date)
         print("formatted date is =  \(dateString)")
         
+        if(textMessage!.receiverType == CometChatConstants.receiverType.group){
+            
+            messageDict["isGroup"] = true
+            
+        }else {
+            
+            messageDict["isGroup"] = false
+            
+        }
+        
         messageDict["userID"] = textMessage!.receiverUid
         messageDict["messageText"] = textMessage!.text
         messageDict["isSelf"] = false
         messageDict["time"] = dateString
         messageDict["messageType"] = "text"
-        messageDict["isGroup"] = false
         messageDict["avatarURL"] = ""
         print("MessageDict \(messageDict)")
         

@@ -43,13 +43,22 @@ struct getMessageResponse {
                     isSelf = false
                 }
                 
+                if(myData.receiverType == CometChatConstants.receiverType.group){
+                    
+                    messageDict["isGroup"] = true
+                    
+                }else {
+                    
+                    messageDict["isGroup"] = false
+                    
+                }
+                
                 let myMessage = (myData as? TextMessage)
                 print("myMessage is \(String(describing: myMessage?.text))")
                 messageDict["userID"] = "11"
                 messageDict["messageText"] = myMessage?.text
                 messageDict["messageType"] = "text" //
                 messageDict["isSelf"] = isSelf
-                messageDict["isGroup"] = false
                 messageDict["time"] = dateString
                 messageDict["avatarURL"] = "testURL"
                 print("myDict is \(messageDict)")
@@ -90,11 +99,20 @@ struct getSendMessageResponse {
                 let myMessage = (myMessageData as? TextMessage)
                 print("myMessage is \(String(describing: myMessage?.text))")
                 
+                if(myMessageData.receiverType == CometChatConstants.receiverType.group){
+                    
+                    messageDict["isGroup"] = true
+                    
+                }else {
+                    
+                    messageDict["isGroup"] = false
+                    
+                }
+                
                 messageDict["userID"] = "11"
                 messageDict["messageText"] = myMessage?.text
                 messageDict["messageType"] = "text" //
                 messageDict["isSelf"] = true
-                messageDict["isGroup"] = false
                 messageDict["time"] = dateString
                 messageDict["avatarURL"] = "testURL"
                 print("myDict is \(messageDict)")
