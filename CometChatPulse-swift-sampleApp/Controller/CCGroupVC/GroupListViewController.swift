@@ -114,9 +114,10 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         self.rightPadding.constant = CGFloat(UIAppearanceSize.Padding)
         
         switch AppAppearance{
-        case .facebook: self.groupTableView.separatorStyle = .none
-        case .whatsapp: break
-        case .cometchat: break
+        case .AzureRadiance:self.groupTableView.separatorStyle = .none
+        case .MountainMeadow:break
+        case .PersianBlue:break
+        case .Custom:break
         }
         
         // NavigationBar Appearance
@@ -150,10 +151,10 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         searchController.searchBar.delegate = self
         searchController.searchBar.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
         
-        if (Bundle.main.infoDictionary?["UIApperance"] as? String)?.getApperance == .cometchat {
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Group", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
+        if(UIAppearanceColor.SEARCH_BAR_STYLE_LIGHT_CONTENT == true){
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
         }else{
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Group", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
         }
         
         

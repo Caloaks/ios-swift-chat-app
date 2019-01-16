@@ -123,7 +123,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         switch profileItems[indexPath.row]{
         case UserProfileCell.AUDIO_CALL_CELL:
-        
             cell.CellLeftImage.isHidden = true
             cell.CellTitle.text = "Audio Call"
             let image = UIImage(named: "audio_call")!.withRenderingMode(.alwaysTemplate)

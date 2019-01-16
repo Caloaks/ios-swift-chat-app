@@ -9,21 +9,28 @@
 import Foundation
 import  CometChatSDK
 
+public enum callType{
+    case audio
+    case video
+}
 
 
+public enum callTo{
+    case user
+    case group
+}
 
 
-    func sendCallRequest(aNewCall:Call){
+class Calling {
+    
+    func sendCall(aNewCall:Call){
         
         CometChat.sendCallRequest(call: aNewCall, onSuccess:  { (ongoing_call) in
 
             print("sendCallRequest onSuccess: \(String(describing: ongoing_call))")
             
         }) { (error) in
-            
             print("sendCallRequest error: \(String(describing: error))")
         }
     }
-
-
-
+}

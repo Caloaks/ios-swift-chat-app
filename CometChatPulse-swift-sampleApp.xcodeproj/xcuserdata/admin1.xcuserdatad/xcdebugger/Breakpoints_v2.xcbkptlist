@@ -13,5 +13,133 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CometChatPulse-swift-sampleApp/Controller/CallingVC/CallingViewController.swift"
+            timestampString = "569317402.522619"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "sendCallRequest()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CometChatPulse-swift-sampleApp/Controller/CallingVC/CallingViewController.swift"
+            timestampString = "569317402.523111"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "sendCallRequest()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CometChatPulse-swift-sampleApp/Controller/CallingVC/CallingViewController.swift"
+            timestampString = "569317402.52345"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "sendCallRequest()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CometChatPulse_swift_sampleApp.CallingViewController.sendCallRequest() -&gt; ()"
+                  moduleName = "CometChatPulse-swift-sampleApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin1/Documents/CometChat-V8/Pulse-GitRepo/ios-swift-chat-app/CometChatPulse-swift-sampleApp/Controller/CallingVC/CallingViewController.swift"
+                  timestampString = "569317673.8407969"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "740">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;CometChatSDK.Call&gt;) -&gt; () in CometChatPulse_swift_sampleApp.CallingViewController.sendCallRequest() -&gt; ()"
+                  moduleName = "CometChatPulse-swift-sampleApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin1/Documents/CometChat-V8/Pulse-GitRepo/ios-swift-chat-app/CometChatPulse-swift-sampleApp/Controller/CallingVC/CallingViewController.swift"
+                  timestampString = "569317673.84364"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CometChatPulse-swift-sampleApp/Controller/CCLoginVC/LoginViewController.swift"
+            timestampString = "569317402.52379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "login(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CometChatPulse_swift_sampleApp.LoginViewController.login(Any) -&gt; ()"
+                  moduleName = "CometChatPulse-swift-sampleApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin1/Documents/CometChat-V8/Pulse-GitRepo/ios-swift-chat-app/CometChatPulse-swift-sampleApp/Controller/CCLoginVC/LoginViewController.swift"
+                  timestampString = "569317673.850789"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "816">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (CometChatSDK.User) -&gt; () in CometChatPulse_swift_sampleApp.LoginViewController.login(Any) -&gt; ()"
+                  moduleName = "CometChatPulse-swift-sampleApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin1/Documents/CometChat-V8/Pulse-GitRepo/ios-swift-chat-app/CometChatPulse-swift-sampleApp/Controller/CCLoginVC/LoginViewController.swift"
+                  timestampString = "569317673.853785"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

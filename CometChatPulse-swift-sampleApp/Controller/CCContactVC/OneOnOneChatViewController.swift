@@ -132,14 +132,16 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
         //Send button:
         switch AppAppearance{
-        case .facebook:
+        case .AzureRadiance:
+             sendBtn.backgroundColor = UIColor.init(hexFromString: "0084FF")
+        case .MountainMeadow:
             sendBtn.backgroundColor = UIColor.init(hexFromString: "0084FF")
-        case .whatsapp:
-            sendBtn.backgroundColor = UIColor.init(hexFromString: "0084FF")
-        case .cometchat:
-            sendBtn.backgroundColor = UIColor.init(hexFromString: "2636BE")
+        case .PersianBlue:
+            sendBtn.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+        case .Custom:
+            sendBtn.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
         }
-        
+
         
         //BuddyAvtar Apperance
     
@@ -171,12 +173,15 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         buddyStatus = UILabel(frame: CGRect(x:0,y: titleView.frame.origin.y + 22,width: 200,height: 21))
         
         switch AppAppearance {
-        case .facebook:
+            
+        case .AzureRadiance:
+             buddyStatus.textColor = UIColor.init(hexFromString: "3E3E3E")
+        case .MountainMeadow:
             buddyStatus.textColor = UIColor.init(hexFromString: "3E3E3E")
-        case .whatsapp:
+        case .PersianBlue:
+            buddyStatus.textColor = UIColor.init(hexFromString: "FFFFFF")
+        case .Custom:
             buddyStatus.textColor = UIColor.init(hexFromString: "3E3E3E")
-        case .cometchat:
-             buddyStatus.textColor = UIColor.init(hexFromString: "FFFFFF")
         }
 
         buddyStatus.textAlignment = NSTextAlignment.left
@@ -350,23 +355,34 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     @IBAction func audioCallPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
-        CallingViewController.userAvtarImage = buddyAvtar
-        CallingViewController.callingString = "Calling ..."
-        CallingViewController.userNameString = buddyName.text
         CallingViewController.isAudioCall = true
-        self.present(CallingViewController, animated: true, completion: nil)
+        CallingViewController.isIncoming = false
+        presentCalling(CallingViewController: CallingViewController);
+       // CallingViewController.callTo = .user
+      //allingViewController.callType = .audio
         
     }
     @IBAction func videoCallPressed(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
-        CallingViewController.userAvtarImage = buddyAvtar
-        CallingViewController.userNameString = buddyName.text
-        CallingViewController.callingString = "Calling ..."
+
         CallingViewController.isAudioCall = false
-        self.present(CallingViewController, animated: true, completion: nil)
+         CallingViewController.isIncoming = false
+        //CallingViewController.callType = .video
+        presentCalling(CallingViewController: CallingViewController);
         
+    }
+    
+    func presentCalling(CallingViewController:CallingViewController) -> Void {
+        
+        CallingViewController.userAvtarImage = buddyAvtar
+        CallingViewController.isIncoming = false
+        CallingViewController.callingString = "Calling ..."
+        CallingViewController.userNameString = buddyName.text
+        CallingViewController.callerUID = buddyUID
+
+        self.present(CallingViewController, animated: true, completion: nil)
     }
 }
 

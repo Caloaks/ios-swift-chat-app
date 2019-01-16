@@ -9,7 +9,7 @@ import QuartzCore
 @IBDesignable
 public final class CCActivityIndicator: UIView {
     /// Specifies the segment animation duration.
-    public var animationDuration: Double = 1
+    public var animationDuration: Double = 0.5
     /// Specifies the indicator rotation animatino duration.
     public var rotationDuration: Double = 10
     /// Specifies the number of segments in the indicator.
@@ -150,8 +150,8 @@ public final class CCActivityIndicator: UIView {
         
         replicatorLayer.add(rotate, forKey: "rotate")
         segmentLayer.add(shrinkStart, forKey: "start")
-        segmentLayer.add(shrinkEnd, forKey: "end")
-        segmentLayer.add(fade, forKey: "fade")
+        //segmentLayer.add(shrinkEnd, forKey: "end")
+        //segmentLayer.add(fade, forKey: "fade")
     }
     
     /// Stops the animation of the indicator.
@@ -160,8 +160,8 @@ public final class CCActivityIndicator: UIView {
         
         replicatorLayer.removeAnimation(forKey: "rotate")
         segmentLayer.removeAnimation(forKey: "start")
-        segmentLayer.removeAnimation(forKey: "end")
-        segmentLayer.removeAnimation(forKey: "fade")
+        //segmentLayer.removeAnimation(forKey: "end")
+//        segmentLayer.removeAnimation(forKey: "fade")
         
         if hidesWhenStopped {
             self.isHidden = true
