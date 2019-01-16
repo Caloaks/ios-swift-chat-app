@@ -1,7 +1,7 @@
 
 <div style="width:100%">
 	<div style="width:50%; display:inline-block">
-		<img align="center" alt="CometChat Pulse" src="https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/Logo.gif">		
+		<img align="center" alt="CometChat Pulse" src="">		
 	</div>	
 </div>
 </br>
@@ -81,6 +81,11 @@ CometChat iOS Demo app made using CometChatSDK is a fully functional messaging a
     
  # Customizing the UI
  
+ We have provided three themes with our sample app namely **PersianBlue, MountainMeadow, AzureRadiance**. To apply the themes:
+ 
+   - Go to Under CometChatPro-swift-sampleApp -->  CometChat-info.plist
+    
+   - Under Authentication section, modify *APP_ID* and *API_KEY* with your own **API_KEY** and **APP_ID**
  
  
        
