@@ -131,7 +131,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		5891248E21B2AC6C003500B5 /* CometChatPulse-swift-sampleApp */ = {
+		5891248E21B2AC6C003500B5 /* CometChatPro-swift-sampleApp */ = {
 			isa = PBXGroup;
 			children = (
 				589124AC21B2AC6C003500B5 /* AppDelegate.swift */,
@@ -144,7 +144,7 @@
 				5891248F21B2AC6C003500B5 /* Resources */,
 				589124AD21B2AC6C003500B5 /* Extensions */,
 			);
-			path = "CometChatPulse-swift-sampleApp";
+			path = "CometChatPro-swift-sampleApp";
 			sourceTree = "<group>";
 		};
 		5891248F21B2AC6C003500B5 /* Resources */ = {
@@ -306,7 +306,7 @@
 		B2BC608C219DACF9002C24D3 = {
 			isa = PBXGroup;
 			children = (
-				5891248E21B2AC6C003500B5 /* CometChatPulse-swift-sampleApp */,
+				5891248E21B2AC6C003500B5 /* CometChatPro-swift-sampleApp */,
 				584900AC21B2AA7C009BB669 /* Info.plist */,
 				B2BC6096219DACF9002C24D3 /* Products */,
 				B2BB031921DF320000B2479D /* Frameworks */,
