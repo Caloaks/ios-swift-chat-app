@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CometChatSDK
+import CometChatPro
 
 struct Message{
     

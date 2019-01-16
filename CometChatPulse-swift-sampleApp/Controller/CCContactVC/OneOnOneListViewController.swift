@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import CometChatSDK
-class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , CometChatUserEventDelegate, UISearchBarDelegate{
+import CometChatPro
+class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITableViewDataSource , CometChatUserDelegate, UISearchBarDelegate{
     
     func onUserOnline(user: User) {
         
@@ -47,7 +47,7 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         
         //Memory Allocation
         getUserArray = [User]()
-        CometChat.userEventdelegate = self
+        CometChat.userdelegate = self
         
          //Triggering Notifications
         DispatchQueue.global().async {
@@ -100,10 +100,12 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         self.rightPadding.constant = CGFloat(UIAppearanceSize.Padding)
         
         switch AppAppearance{
-        case .facebook: self.oneOneOneTableView.separatorStyle = .none
-        case .whatsapp: break
-        case .cometchat: break
+        case .AzureRadiance:self.oneOneOneTableView.separatorStyle = .none
+        case .MountainMeadow:break
+        case .PersianBlue:break
+        case .Custom:break
         }
+        
         // NavigationBar Appearance
         
         navigationItem.title = "Contacts"
@@ -138,10 +140,10 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         searchController.searchBar.delegate = self
         searchController.searchBar.tintColor = UIColor.init(hexFromString: UIAppearanceColor.NAVIGATION_BAR_TITLE_COLOR)
         
-         if (Bundle.main.infoDictionary?["UIApperance"] as? String)?.getApperance == .cometchat {
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
-         }else{
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
+        if(UIAppearanceColor.SEARCH_BAR_STYLE_LIGHT_CONTENT == true){
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
+        }else{
+          UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Name", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 0, alpha: 0.5)])
         }
         
         
@@ -243,10 +245,6 @@ class OneOnOneListViewController: UIViewController,UITableViewDelegate , UITable
         
         
     }
-    
-
-    
-    
 
     //didSelectRowAt indexPath
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -336,11 +334,12 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     //More button Pressed
     @IBAction func morePressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let CCWebviewController = storyboard.instantiateViewController(withIdentifier: "moreSettingsViewController") as! MoreSettingsViewController
-        navigationController?.pushViewController(CCWebviewController, animated: true)
-        CCWebviewController.title = "More"
-        CCWebviewController.hidesBottomBarWhenPushed = true
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let CCMoreViewController = storyboard.instantiateViewController(withIdentifier: "moreSettingsViewController") as! MoreSettingsViewController
+//        navigationController?.pushViewController(CCMoreViewController, animated: true)
+//        CCMoreViewController.title = "More"
+//        CCMoreViewController.hidesBottomBarWhenPushed = true
+
     }
     
     //createContact button Pressed
@@ -359,9 +358,5 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         present(actionSheetController, animated: true, completion: nil)
     }
 
-    
-    func didReceiveMessage(message: BaseMessage?, error: CometChatException?) {
-        
-    }
 
 }

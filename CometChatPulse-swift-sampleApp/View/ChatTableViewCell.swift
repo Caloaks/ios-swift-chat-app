@@ -40,26 +40,25 @@ class ChatTableViewCell: UITableViewCell {
                 
                 switch AppAppearance{
                     
-                case .facebook:
-                self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
-                    messageLabel.textColor = UIColor.white
-                
-                    break
+                case .AzureRadiance:
+                    self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
+                        messageLabel.textColor = UIColor.white
                     
-                case .whatsapp:
-               
-                    self.messageBackgroundView.layer.cornerRadius = 15
-                    messageBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
-                    messageLabel.textColor = UIColor.white
-            
-                    break
+                case .MountainMeadow:
                     
-                case .cometchat:
-                self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
-                    messageLabel.textColor = UIColor.white
-
-                    break
+                        self.messageBackgroundView.layer.cornerRadius = 15
+                        messageBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
+                        messageLabel.textColor = UIColor.white
                     
+                case .PersianBlue:
+                    self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
+                    
+                       messageLabel.textColor = UIColor.white
+                case .Custom:
+                    
+                        self.messageBackgroundView.layer.cornerRadius = 15
+                        messageBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
+                        messageLabel.textColor = UIColor.white
                 }
                 
             }else {
@@ -73,32 +72,30 @@ class ChatTableViewCell: UITableViewCell {
                 
                 switch AppAppearance{
                     
-                case .facebook:
+                case .AzureRadiance:
+                    
+                     self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: "E6E9ED")
+                        messageLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
+                    
+                case .MountainMeadow:
+                    
+                        self.messageBackgroundView.layer.cornerRadius = 15
+                        messageBackgroundView.backgroundColor = UIColor.init(hexFromString: "E6E9ED")
+                        messageLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
+                    
+                case .PersianBlue:
+                
                 self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: "E6E9ED")
                     messageLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
-                    break
                     
-                case .whatsapp:
-                    
+                case .Custom:
                     
                     self.messageBackgroundView.layer.cornerRadius = 15
                     messageBackgroundView.backgroundColor = UIColor.init(hexFromString: "E6E9ED")
                     messageLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
-                    break
-                    
-                case .cometchat:
-                self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: "E6E9ED")
-                    messageLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
-                    break
-                    
                 }
-                
-                
             }
-            
         }
-        
-        
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?){

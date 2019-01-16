@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import CometChatSDK
+import CometChatPro
 
 
 class fetchData_ {
@@ -21,33 +21,34 @@ class fetchData_ {
     
     func fetchUsers(completionHandler:@escaping userResponse) {
         print("heere 11")
-        userRequest = UsersRequest.UsersRequestBuilder(limit: 10).build()
+        let userrequest = UsersRequest.UsersRequestBuilder(limit: 10).build()
         print("heere 22")
-        userRequest.fetchNext { (users, error) in
-            print("heere 33")
-            guard let usersArray = users else {
-                print("heere 44")
-                completionHandler(nil,error)
-                return
-            }
-            print("heere 55")
+        userrequest.fetchNext(onSuccess: { (users) in
+            
+            let usersArray = users
             completionHandler(usersArray,nil)
             
+            
+        }) { (error) in
+            
+            completionHandler(nil,error)
+            
         }
+        
     }
     
     func fetchGroupList(completionHandler:@escaping groupResponse) {
-    
-         groupRequest = GroupsRequest.GroupsRequestBuilder(Limit: 10).build()
         
-         groupRequest.fetchNext { (groupList, error) in
+        groupRequest = GroupsRequest.GroupsRequestBuilder(Limit: 10).build()
+        groupRequest.fetchNext(onSuccess: { (groupList) in
             
-            guard let groupListArray = groupList else {
-                completionHandler(nil,error)
-                return
-            }
-           completionHandler(groupListArray,nil)
+            let groupListArray = groupList
+            completionHandler(groupListArray,nil)
+            
+        }) { (error) in
+            completionHandler(nil,error)
         }
+        
     }
 
 }

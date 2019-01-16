@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatSDK
+import CometChatPro
 
 class EmbeddedViewController: UIViewController {
 
@@ -57,6 +57,8 @@ class EmbeddedViewController: UIViewController {
     
     func fetchUsers(){
         // This Method fetch the users from the Server.
+        
+        print("Im in fetchUsers")
         usersArray = Array<User>()
         
         fetchData_().fetchUsers { (users, error) in
@@ -67,6 +69,7 @@ class EmbeddedViewController: UIViewController {
                 return
             }
             for user in users! {
+                print("Im in users: \(String(describing: users))")
                 self.usersArray.append(user)
             }
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "com.usersData"), object: nil, userInfo: ["usersData":self.usersArray])

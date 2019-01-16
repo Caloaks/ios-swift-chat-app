@@ -47,10 +47,12 @@ class RecentListViewController: UIViewController ,UISearchControllerDelegate {
         self.rightPadding.constant = CGFloat(UIAppearanceSize.Padding)
         
         switch AppAppearance{
-        case .facebook: self.recentTableView.separatorStyle = .none
-        case .whatsapp: break
-        case .cometchat: break
+        case .AzureRadiance: self.recentTableView.separatorStyle = .none
+        case .MountainMeadow:break
+        case .PersianBlue:break
+        case .Custom:break
         }
+       
 //        // NavigationBar Appearance
         navigationItem.title = "Recent"
         let normalTitleforNavigationBar = [

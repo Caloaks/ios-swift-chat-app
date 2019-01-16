@@ -8,11 +8,11 @@
 
 import Foundation
 
-import CometChatSDK
+import CometChatPro
 
 class ChatVCCallbacks_{
     
-    private var userMessageRequest:UserMessagesRequest!
+    private var userMessageRequest:MessagesRequest!
     private var groupMessageRequest:GroupMembersRequest!
     
     public typealias sendMessageResponse = (_ success:getSendMessageResponse? , _ error:CometChatException?) -> Void
@@ -22,22 +22,23 @@ class ChatVCCallbacks_{
     
     func fetchUserMessages(userUID: String, completionHandler:@escaping usermessageResponse) {
         
-        userMessageRequest = UserMessagesRequest.UserMessagesRequestBuilder(fromUID: userUID).setLimit(limit: 20).build()
+        let userMessageRequest = MessagesRequest.MessageRequestBuilder(UID: userUID).set(limit: 20).build();
         
-        userMessageRequest.fetchPrevious { (messages, error) in
-            
-            guard let usersMessagesArray = messages else {
-                completionHandler(nil,error)
-                return
-            }
-            print("here the array is \(usersMessagesArray)")
+        userMessageRequest.fetchPrevious(onSuccess: { (messages) in
+            let usersMessagesArray = messages
             
             do {
-                let response = try getMessageResponse(myMessageData: usersMessagesArray)
+                let response = try getMessageResponse(myMessageData: usersMessagesArray!)
                 completionHandler(response, nil)
             } catch {}
+            
+        }) { (error) in
+            
+            completionHandler(nil,error)
+            return
+            
+        }
         
-    }
     }
     
     func sendTextMessage(toUserUID: String, message : String ,completionHandler:@escaping sendMessageResponse){

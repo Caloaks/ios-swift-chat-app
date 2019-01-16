@@ -7,10 +7,37 @@
 //
 
 import UIKit
-import CometChatSDK
+import CometChatPro
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CometChatUserEventDelegate, CometChatCallDelegate, CometChatMessageDelegate, CometChatGroupEventDelegate,  UISplitViewControllerDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate, CometChatUserDelegate, CometChatMessageDelegate, CometChatGroupDelegate,  UISplitViewControllerDelegate{
+    
+   
+    
+    func onGroupMemberJoined(joinedUser: User, joinedGroup: Group) {
+        
+    }
+    
+    func onGroupMemberLeft(leftUser: User, leftGroup: Group) {
+        
+    }
+    
+    func onGroupMemberKicked(kickedUser: User, kickedBy: User, kickedFrom: Group) {
+        
+    }
+    
+    func onGroupMemberBanned(bannedUser: User, bannedBy: User, bannedFrom: Group) {
+        
+    }
+    
+    func onGroupMemberUnbanned(unbannedUser: User, unbannedBy: User, unbannedFrom: Group) {
+        
+    }
+    
+    func onGroupMemberScopeChanged(user: User, scopeChangedTo: String, scopeChangedFrom: String, group: Group) {
+        
+    }
+    
     func onUserOnline(user: User) {
         
     }
@@ -70,62 +97,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CometChatUserEventDelegat
     func initialization(){
         // init the Cometchat by using your app id
         
-        let App_ID:String = Bundle.main.infoDictionary?["APP_ID"] as! String
-        
-//        cometchat = CometChat(appId:App_ID, onSuccess: <#(Bool) -> Void#> ) { (error) in
-//            print("error is : \(error)")
-//        }
-        
-        CometChat(appId: App_ID, onSuccess: { (Success) in
+
+        CometChat(appId: AuthenticationDict?["APP_ID"] as! String, onSuccess: { (Success) in
            print("Success ")
         }) { (error) in
-            print("error is : \(error)")
-        }
-        
+
         //Assigning Delegate
         
         CometChat.calldelegate = self
         CometChat.messagedelegate = self
-        CometChat.userEventdelegate = self
-        CometChat.groupEventdelegate = self
+        CometChat.userdelegate = self
+        CometChat.groupdelegate = self
     }
     
-    func setupGlobalAppearance(){
-        
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family) Font names: \(names)")
-        }
-        
-    }
+}
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-     
+       
+ 
         self.initialization()
-        self.setupGlobalAppearance()
         UIFont.overrideInitialize()
         
-      switch AppAppearance{
-        case .cometchat:
+        switch AppAppearance{
+            
+        case .AzureRadiance:
+            break
+        case .MountainMeadow:
+            break
+        case .PersianBlue:
+            
             application.statusBarStyle = .lightContent
-//            UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-//            // Sets shadow (line below the bar) to a blank image
-//            UINavigationBar.appearance().shadowImage = UIImage()
-//            // Sets the translucent background color
-//            UINavigationBar.appearance().backgroundColor = .clear
-//            // Set translucent. (Default value is already true, so this can be removed if desired.)
+            //            UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+            //            // Sets shadow (line below the bar) to a blank image
+            //            UINavigationBar.appearance().shadowImage = UIImage()
+            //            // Sets the translucent background color
+            //            UINavigationBar.appearance().backgroundColor = .clear
+            //            // Set translucent. (Default value is already true, so this can be removed if desired.)
             UINavigationBar.appearance().isTranslucent = false
             UINavigationBar.appearance().backgroundColor = .clear
-        case .facebook: break
             
-        case .whatsapp: break
-            
+        case .Custom:
+            break
         }
-        
         return true
     }
     
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        
+        CometChat.startServices()
+        
+    }
     
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -142,19 +164,93 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CometChatUserEventDelegat
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func didReceiveMessage(message: BaseMessage?, error: CometChatException?) {
+}
+
+
+extension AppDelegate : CometChatCallDelegate{
+  
+    
+   
+    
+    
+    // Calling Delegates
+    
+    func onIncomingCallReceived(incomingCall: Call?, error: CometChatException?) {
+        
+        DispatchQueue.main.async {
+            
+            // Check if user busy with any other call
+            if (CometChat.currentCall == nil){
+        //var buddyAvtar:UIImageView!
+        // buddyAvtar.downloaded(from: aIncomingCall?.sender?.avatar ?? "")
+        print("aIncomingCall: \(String(describing: incomingCall))")
+        print("aIncomingCall: \(String(describing: incomingCall?.sender?.name))")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
+        
+        //CallingViewController.userAvtarImage = buddyAvtar.image
+        CallingViewController.callingString = "Incoming Call"
+        CallingViewController.userNameString = incomingCall?.sender?.name
+        CallingViewController.isIncoming = true
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = CallingViewController
+                
+                 }else{
+                
+                CometChat.rejectCall(call: incomingCall!, status: .busy, onSuccess: { (call_) in
+                    
+                    // Successfully rejected and sent busy tone to caller
+                    
+                }, onError: { (exception) in
+                    
+                    // failed to send busy tone to caller
+                    
+                });
+                
+            }
+            
+        }
+
+    }
+    
+    func onCallAccepted(aAcceptedCall: Call?, error: CometChatException?) {
+        
+        CometChat.startCall(call: aAcceptedCall!, inView: inputView!, userJoined: { (user) in
+            
+        }, userLeft: { (user) in
+            
+        }, onError: { (CCException) in
+            
+        }) { (call) in
+            
+        }
+    }
+    
+    func onCallRejected(aRejectedCall: Call?, error: CometChatException?) {
+        
         
     }
     
-
-
+    func onOutgoingCallAccepted(acceptedCall: Call?, error: CometChatException?) {
+        
+    }
+    
+    func onOutgoingCallRejected(rejectedCall: Call?, error: CometChatException?) {
+        
+    }
+    
+    func onIncomingCallCanceled(canceledCall: Call?, error: CometChatException?) {
+        
+    }
 }
+    
+
+
 

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatSDK
+import CometChatPro
 
 class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource,CometChatMessageDelegate {
     
@@ -69,15 +69,17 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var chatInputView: UITextView!
     @IBOutlet weak var chatTableview: UITableView!
+    
+    
     //Outlets Declarations
     @IBOutlet weak var videoCallBtn: UIBarButtonItem!
     @IBOutlet weak var audioCallButton: UIBarButtonItem!
     
     // Variable Declarations
+    var buddyUID:String!
     var buddyNameString:String!
     var buddyStatusString:String!
-    var buddyUID:String!
-    //var buddyAvtar:String!
+    var isGroup:String!
     var buddyAvtar:UIImage!
     var buddyName:UILabel!
     var buddyStatus:UILabel!
@@ -91,8 +93,6 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     
     var chatMessage = [Message]()
     
-    
-    
     fileprivate let cellID = "chatCell"
 //    let chatMessages = ["Hi this is my first text message", "I want to have a string that is actually very long in length so that I can get a very large string at the o/p", "I want to have a string that is actually very long in length so that I can get a very large string at the o/p I want to have a string that is actually very long in length so that I can get a very large string at the o/p","Hi Jeet"]
     
@@ -100,6 +100,8 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("UID is: \(String(describing: buddyUID))")
+        
         //Registering Notifications
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -192,14 +194,16 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
         //Send button:
         switch AppAppearance{
-        case .facebook:
+        case .AzureRadiance:
+             sendBtn.backgroundColor = UIColor.init(hexFromString: "0084FF")
+        case .MountainMeadow:
             sendBtn.backgroundColor = UIColor.init(hexFromString: "0084FF")
-        case .whatsapp:
-            sendBtn.backgroundColor = UIColor.init(hexFromString: "0084FF")
-        case .cometchat:
-            sendBtn.backgroundColor = UIColor.init(hexFromString: "2636BE")
+        case .PersianBlue:
+            sendBtn.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
+        case .Custom:
+            sendBtn.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR)
         }
-        
+
         
         //BuddyAvtar Apperance
     
@@ -231,12 +235,15 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         buddyStatus = UILabel(frame: CGRect(x:0,y: titleView.frame.origin.y + 22,width: 200,height: 21))
         
         switch AppAppearance {
-        case .facebook:
+            
+        case .AzureRadiance:
+             buddyStatus.textColor = UIColor.init(hexFromString: "3E3E3E")
+        case .MountainMeadow:
             buddyStatus.textColor = UIColor.init(hexFromString: "3E3E3E")
-        case .whatsapp:
+        case .PersianBlue:
+            buddyStatus.textColor = UIColor.init(hexFromString: "FFFFFF")
+        case .Custom:
             buddyStatus.textColor = UIColor.init(hexFromString: "3E3E3E")
-        case .cometchat:
-             buddyStatus.textColor = UIColor.init(hexFromString: "FFFFFF")
         }
 
         buddyStatus.textAlignment = NSTextAlignment.left
@@ -419,5 +426,37 @@ class OneOnOneChatViewController: UIViewController,UITextViewDelegate,UITableVie
         
     }
 
+    @IBAction func audioCallPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
+        CallingViewController.isAudioCall = true
+        CallingViewController.isIncoming = false
+        presentCalling(CallingViewController: CallingViewController);
+       // CallingViewController.callTo = .user
+      //allingViewController.callType = .audio
+        
+    }
+    @IBAction func videoCallPressed(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let CallingViewController = storyboard.instantiateViewController(withIdentifier: "callingViewController") as! CallingViewController
+
+        CallingViewController.isAudioCall = false
+         CallingViewController.isIncoming = false
+        //CallingViewController.callType = .video
+        presentCalling(CallingViewController: CallingViewController);
+        
+    }
+    
+    func presentCalling(CallingViewController:CallingViewController) -> Void {
+        
+        CallingViewController.userAvtarImage = buddyAvtar
+        CallingViewController.isIncoming = false
+        CallingViewController.callingString = "Calling ..."
+        CallingViewController.userNameString = buddyName.text
+        CallingViewController.callerUID = buddyUID
+
+        self.present(CallingViewController, animated: true, completion: nil)
+    }
 }
 
