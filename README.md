@@ -1,7 +1,7 @@
 
 <div style="width:100%">
 	<div style="width:50%; display:inline-block">
-		<img align="center" alt="CometChat Pulse" src="https://github.com/CometChat-Pulse/ios-swift-chat-app/blob/master/Screenshots/pro2.png">		
+		<img align="center" alt="CometChat Pulse" src="https://github.com/cometchat-pro/ios-swift-chat-app/blob/master/Screenshots/Logo.gif">		
 	</div>	
 </div>
 </br>
