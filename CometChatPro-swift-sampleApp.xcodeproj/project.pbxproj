@@ -105,7 +105,7 @@
 		B22301C621D271EA00483CC7 /* Product Sans Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Product Sans Italic.ttf"; sourceTree = "<group>"; };
 		B2753A3421DD0554004D895F /* CallingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingViewController.swift; sourceTree = "<group>"; };
 		B2BB032621DF374500B2479D /* MoreSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreSettingTableViewCell.swift; sourceTree = "<group>"; };
-		B2BC6095219DACF9002C24D3 /* CometChatPulse-swift-sampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CometChatPulse-swift-sampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2BC6095219DACF9002C24D3 /* CometChatPro-swift-sampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CometChatPro-swift-sampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2FB0F0B21EC880C00CEDD4A /* CometChat-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CometChat-info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -316,7 +316,7 @@
 		B2BC6096219DACF9002C24D3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B2BC6095219DACF9002C24D3 /* CometChatPulse-swift-sampleApp.app */,
+				B2BC6095219DACF9002C24D3 /* CometChatPro-swift-sampleApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -324,9 +324,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B2BC6094219DACF9002C24D3 /* CometChatPulse-swift-sampleApp */ = {
+		B2BC6094219DACF9002C24D3 /* CometChatPro-swift-sampleApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B2BC60A7219DACFA002C24D3 /* Build configuration list for PBXNativeTarget "CometChatPulse-swift-sampleApp" */;
+			buildConfigurationList = B2BC60A7219DACFA002C24D3 /* Build configuration list for PBXNativeTarget "CometChatPro-swift-sampleApp" */;
 			buildPhases = (
 				B2BC6091219DACF9002C24D3 /* Sources */,
 				B2BC6092219DACF9002C24D3 /* Frameworks */,
@@ -337,9 +337,9 @@
 			);
 			dependencies = (
 			);
-			name = "CometChatPulse-swift-sampleApp";
+			name = "CometChatPro-swift-sampleApp";
 			productName = CometChatUI;
-			productReference = B2BC6095219DACF9002C24D3 /* CometChatPulse-swift-sampleApp.app */;
+			productReference = B2BC6095219DACF9002C24D3 /* CometChatPro-swift-sampleApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -357,7 +357,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B2BC6090219DACF9002C24D3 /* Build configuration list for PBXProject "CometChatPulse-swift-sampleApp" */;
+			buildConfigurationList = B2BC6090219DACF9002C24D3 /* Build configuration list for PBXProject "CometChatPro-swift-sampleApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -370,7 +370,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B2BC6094219DACF9002C24D3 /* CometChatPulse-swift-sampleApp */,
+				B2BC6094219DACF9002C24D3 /* CometChatPro-swift-sampleApp */,
 			);
 		};
 /* End PBXProject section */
@@ -629,7 +629,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B2BC6090219DACF9002C24D3 /* Build configuration list for PBXProject "CometChatPulse-swift-sampleApp" */ = {
+		B2BC6090219DACF9002C24D3 /* Build configuration list for PBXProject "CometChatPro-swift-sampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B2BC60A5219DACFA002C24D3 /* Debug */,
@@ -638,7 +638,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B2BC60A7219DACFA002C24D3 /* Build configuration list for PBXNativeTarget "CometChatPulse-swift-sampleApp" */ = {
+		B2BC60A7219DACFA002C24D3 /* Build configuration list for PBXNativeTarget "CometChatPro-swift-sampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B2BC60A8219DACFA002C24D3 /* Debug */,
