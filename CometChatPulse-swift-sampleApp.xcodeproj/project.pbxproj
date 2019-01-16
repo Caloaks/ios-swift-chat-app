@@ -37,15 +37,6 @@
 		58C1D1AC21BBDCF900B64915 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D1AB21BBDCF900B64915 /* UserProfileViewController.swift */; };
 		58C1D1AE21BBF0D800B64915 /* UserProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1D1AD21BBF0D800B64915 /* UserProfileViewCell.swift */; };
 		7115443321E52C8B0017FE23 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115443221E52C8B0017FE23 /* MessageResponse.swift */; };
-		7155F75F21EF3C260041741A /* JitsiMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7155F75D21EF3C250041741A /* JitsiMeet.framework */; };
-		7155F76021EF3C260041741A /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7155F75E21EF3C260041741A /* WebRTC.framework */; };
-		7155F76121EF3C300041741A /* JitsiMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7155F75D21EF3C250041741A /* JitsiMeet.framework */; };
-		7155F76221EF3C300041741A /* JitsiMeet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7155F75D21EF3C250041741A /* JitsiMeet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7155F76321EF3C300041741A /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7155F75E21EF3C260041741A /* WebRTC.framework */; };
-		7155F76421EF3C300041741A /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7155F75E21EF3C260041741A /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7155F76621EF4C7C0041741A /* CometChatPro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7155F76521EF4C7C0041741A /* CometChatPro.framework */; };
-		7155F76721EF4C9E0041741A /* CometChatPro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7155F76521EF4C7C0041741A /* CometChatPro.framework */; };
-		7155F76821EF4C9E0041741A /* CometChatPro.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7155F76521EF4C7C0041741A /* CometChatPro.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7169F45121D9538800A82954 /* ChatVCCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7169F45021D9538800A82954 /* ChatVCCallback.swift */; };
 		71ADB0EB21D375A1002443A7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ADB0EA21D375A1002443A7 /* Message.swift */; };
 		71ADB0ED21D41217002443A7 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ADB0EC21D41216002443A7 /* ChatTableViewCell.swift */; };
@@ -66,9 +57,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7155F76221EF3C300041741A /* JitsiMeet.framework in Embed Frameworks */,
-				7155F76421EF3C300041741A /* WebRTC.framework in Embed Frameworks */,
-				7155F76821EF4C9E0041741A /* CometChatPro.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,9 +95,6 @@
 		58C1D1AB21BBDCF900B64915 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		58C1D1AD21BBF0D800B64915 /* UserProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewCell.swift; sourceTree = "<group>"; };
 		7115443221E52C8B0017FE23 /* MessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
-		7155F75D21EF3C250041741A /* JitsiMeet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JitsiMeet.framework; sourceTree = "<group>"; };
-		7155F75E21EF3C260041741A /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
-		7155F76521EF4C7C0041741A /* CometChatPro.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CometChatPro.framework; sourceTree = "<group>"; };
 		7169F45021D9538800A82954 /* ChatVCCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVCCallback.swift; sourceTree = "<group>"; };
 		71ADB0EA21D375A1002443A7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		71ADB0EC21D41216002443A7 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,12 +114,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7155F75F21EF3C260041741A /* JitsiMeet.framework in Frameworks */,
-				7155F76621EF4C7C0041741A /* CometChatPro.framework in Frameworks */,
-				7155F76121EF3C300041741A /* JitsiMeet.framework in Frameworks */,
-				7155F76021EF3C260041741A /* WebRTC.framework in Frameworks */,
-				7155F76321EF3C300041741A /* WebRTC.framework in Frameworks */,
-				7155F76721EF4C9E0041741A /* CometChatPro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,9 +306,6 @@
 		B2BC608C219DACF9002C24D3 = {
 			isa = PBXGroup;
 			children = (
-				7155F76521EF4C7C0041741A /* CometChatPro.framework */,
-				7155F75D21EF3C250041741A /* JitsiMeet.framework */,
-				7155F75E21EF3C260041741A /* WebRTC.framework */,
 				5891248E21B2AC6C003500B5 /* CometChatPulse-swift-sampleApp */,
 				584900AC21B2AA7C009BB669 /* Info.plist */,
 				B2BC6096219DACF9002C24D3 /* Products */,
