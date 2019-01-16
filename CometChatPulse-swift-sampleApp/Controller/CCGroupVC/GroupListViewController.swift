@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CometChatPulseSDK
+import CometChatSDK
 
 class GroupListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource, UISearchBarDelegate{
 
@@ -84,7 +84,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
             
             guard let groupListReceived = groupList else
             {
-                print(error!.errordescription)
+                print(error!.ErrorDescription)
                 return
             }
             for group in groupList! {
@@ -219,7 +219,7 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
         let groupIconURL:String = group.icon ?? "null"
         cell.groupAvtar.downloaded(from: groupIconURL)
         cell.groupParticipants.text = group.groupDescription
-        
+        cell.UID = group.guid
         return cell
     }
     
@@ -231,7 +231,8 @@ class GroupListViewController: UIViewController , UITableViewDelegate , UITableV
        // oneOnOneChatViewController.buddyStatusString = selectedCell.groupName.text
         oneOnOneChatViewController.buddyAvtar = selectedCell.groupAvtar.image
         oneOnOneChatViewController.buddyNameString = selectedCell.groupName.text
-        
+        oneOnOneChatViewController.buddyUID = selectedCell.UID
+        oneOnOneChatViewController.isGroup = "1"
         // self.performSegue(withIdentifier: "showDetail", sender: self)
         navigationController?.pushViewController(oneOnOneChatViewController, animated: true)
         

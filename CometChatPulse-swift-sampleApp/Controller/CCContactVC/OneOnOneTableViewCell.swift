@@ -18,6 +18,7 @@ class OneOnOneTableViewCell: UITableViewCell {
     
     
     //variable Declarations
+    var UID:String!
     
     //This methods getting called when the cell is loaded in the TableView
     override func awakeFromNib() {

@@ -12,58 +12,64 @@ class ChatTableViewCell: UITableViewCell {
 
     let messageLabel = UILabel()
     let messageBackgroundView = UIView()
+    let messageTimeLabel = UILabel()
+    let userAvatarImageView = UIImageView()
     
     var leadingConstraint : NSLayoutConstraint!
     var trailingConstraint : NSLayoutConstraint!
+    var timeLabelLeadingConstraint : NSLayoutConstraint!
+    var timeLabelTrailingConstraint : NSLayoutConstraint!
     
     var enableOutGoingConstraintForbubble = Bool()
     
     
     var chatMessage : Message! {
         didSet{
-//            messageBackgroundView.backgroundColor = chatMessage.isSelf ? UIColor.init(hexFromString: UIAppearanceColor.BACKGROUND_COLOR) : UIColor.lightGray
-//            messageLabel.textColor = chatMessage.isSelf ? UIColor.white : UIColor.darkGray
+
             messageLabel.text = chatMessage.messageText
+            messageTimeLabel.text = chatMessage.time
             
             if(chatMessage.isSelf){
                 
                 leadingConstraint.isActive = false
                 trailingConstraint.isActive = true
+                timeLabelTrailingConstraint.isActive = true
+                timeLabelLeadingConstraint.isActive = false
+                
+                userAvatarImageView.isHidden = true
                 
                 switch AppAppearance{
                     
                 case .facebook:
                 self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
-                
-                messageLabel.textColor = UIColor.white
+                    messageLabel.textColor = UIColor.white
                 
                     break
                     
                 case .whatsapp:
                
-                    
                     self.messageBackgroundView.layer.cornerRadius = 15
                     messageBackgroundView.backgroundColor = UIColor.init(hexFromString: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
                     messageLabel.textColor = UIColor.white
             
-                    
                     break
                     
                 case .cometchat:
                 self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner ], radius: 15, borderColor: .clear, borderWidth: 0, withBackgroundColor: UIAppearanceColor.RIGHT_BUBBLE_BACKGROUND_COLOR)
-                
                     messageLabel.textColor = UIColor.white
 
                     break
                     
                 }
                 
-                
             }else {
                 
                 leadingConstraint.isActive = true
                 trailingConstraint.isActive = false
+                timeLabelTrailingConstraint.isActive = false
+                timeLabelLeadingConstraint.isActive = true
                 
+                userAvatarImageView.isHidden = false
                 
                 switch AppAppearance{
                     
@@ -103,18 +109,18 @@ class ChatTableViewCell: UITableViewCell {
         messageBackgroundView.clipsToBounds = true
         messageBackgroundView.layer.cornerRadius = 15
         messageBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(messageBackgroundView)
         
+        addSubview(messageBackgroundView)
         addSubview(messageLabel)
+        addSubview(messageTimeLabel)
         
         messageLabel.backgroundColor = UIColor.clear
         messageLabel.numberOfLines = 0
-        //messageLabel.textColor = UIColor.white
         
         //Setting Constraints for MessageLabel
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 18).isActive = true
-        //messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        
         messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15).isActive = true
         messageLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
         
@@ -123,43 +129,29 @@ class ChatTableViewCell: UITableViewCell {
         messageBackgroundView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant:12).isActive = true
         messageBackgroundView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 12).isActive = true
         
-        //if(isIncomingMessage){
-        leadingConstraint =  messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20)
-        leadingConstraint.isActive = false
-        //}else {
+        leadingConstraint =  messageLabel.leadingAnchor.constraint(equalTo: userAvatarImageView.trailingAnchor, constant: 17)
         trailingConstraint = messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
-        trailingConstraint.isActive = true
-        //}
         
-//        switch AppAppearance{
-//
-//        case .facebook:
-//            if(enableOutGoingConstraintForbubble){
-//            self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner ], radius: 15, borderColor: .clear, borderWidth: 0)
-//            }else {
-//                self.messageBackgroundView.layer.cornerRadius = 15
-//            }
-//
-//            break
-//
-//        case .whatsapp:
-//
-//            self.messageBackgroundView.layer.cornerRadius = 15
-//
-//            break
-//
-//        case .cometchat:
-//            if(enableOutGoingConstraintForbubble){
-//            self.messageBackgroundView.roundCorners([.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner ], radius: 15, borderColor: .clear, borderWidth: 0)
-//            }else {
-//
-//                self.messageBackgroundView.layer.cornerRadius = 15
-//
-//            }
-//
-//            break
-//
-//        }
+        messageTimeLabel.translatesAutoresizingMaskIntoConstraints = false
+        timeLabelLeadingConstraint = messageTimeLabel.leadingAnchor.constraint(equalTo: messageBackgroundView.trailingAnchor, constant: 5)
+        timeLabelTrailingConstraint = messageTimeLabel.trailingAnchor.constraint(equalTo: messageBackgroundView.leadingAnchor, constant: -5)
+        messageTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
+        messageTimeLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50).isActive = true
+        messageTimeLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 12).isActive = true
+        messageTimeLabel.font = messageTimeLabel.font.withSize(10)
+        messageTimeLabel.textColor = UIColor.init(hexFromString: "3C3B3B")
+        
+        
+        addSubview(userAvatarImageView)
+        
+        userAvatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        userAvatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        userAvatarImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+        userAvatarImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 25).isActive = true
+        userAvatarImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 25).isActive = true
+        userAvatarImageView.clipsToBounds = true
+        userAvatarImageView.layer.cornerRadius = 12.5
+        userAvatarImageView.image = UIImage(named: "default_user")
         
     }
     

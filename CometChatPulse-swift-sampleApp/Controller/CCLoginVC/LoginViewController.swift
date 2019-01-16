@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import CometChatPulseSDK
+import CometChatSDK
 
-class LoginViewController: UIViewController, CometChatPulseDelegate ,UITextFieldDelegate {
+class LoginViewController: UIViewController ,UITextFieldDelegate {
     
     //Outlets Declaration
     @IBOutlet weak var bottomViewTop: NSLayoutConstraint!
@@ -64,27 +64,29 @@ class LoginViewController: UIViewController, CometChatPulseDelegate ,UITextField
         
         let API_KEY:String = Bundle.main.infoDictionary?["API_KEY"] as! String
         
-        CometChat.login(withUid: "superhero53", apiKey: API_KEY, onSuccess: { (current_user) in
-            print("login sucess:",current_user)
+        CometChat.login(uid: loginButton.text!, apiKey: API_KEY, onSuccess: { (user) in
+            
+            print("login sucess:",user!)
+            
             //UIButton State Change
             self.loginButton.setTitle("Login Sucessful", for: .normal)
             self.loginButton.backgroundColor = UIColor.init(hexFromString: "9ACD32")
             //Navigate to Next VC
+            UserDefaults.standard.set(user!.uid, forKey: "LoggedInUserUID")
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-     
+
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let embeddedViewContrroller = storyboard.instantiateViewController(withIdentifier: "embeddedViewContrroller") as! EmbeddedViewController
                 self.navigationController?.pushViewController(embeddedViewContrroller, animated: true)
             }
             
         }) { (error) in
-            print("login error: \(String(describing: error))")
-            DispatchQueue.main.async { [unowned self] in
-                self.loginButton.backgroundColor = UIColor.init(hexFromString: "FF0000")
-                self.loginButton.setTitle("Login Failure", for: .normal)
-            }
+            
+            print("login error:",error!.ErrorDescription)
+            
         }
+        
     }
     
     @IBAction func guestLogin(_ sender: Any) {
@@ -116,7 +118,7 @@ class LoginViewController: UIViewController, CometChatPulseDelegate ,UITextField
     }
 
     
-    func didReceiveMessage(message: BaseMessage?, error: CCException?) {
+    func didReceiveMessage(message: BaseMessage?, error: CometChatException?) {
         
     }
     

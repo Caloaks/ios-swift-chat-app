@@ -7,14 +7,39 @@
 //
 
 import Foundation
+import CometChatSDK
 
 struct Message{
     
-    let messageText: String
+    var messageText: String
     let userID: String
     let avatarURL : String
     let messageType : String
     let isSelf : Bool
     let isGroup : Bool
+    let time : String
+    
+    init?(dict: [String : Any]){
+        
+        guard let userID = dict["userID"] as? String,
+            let messageText = dict["messageText"] as? String,
+            let isSelf = dict["isSelf"] as? Bool,
+            let messageType = dict["messageType"] as? String,
+            let isGroup = dict["isGroup"] as? Bool,
+            let avatarURL = dict["avatarURL"] as? String,
+            let time = dict["time"] as? String
+            else { return nil }
+        
+        self.userID = userID
+        self.messageText = messageText
+        self.messageType = messageType
+        self.isSelf = isSelf
+        self.isGroup = isGroup
+        self.time = time
+        self.avatarURL = avatarURL
+        
+        
+    }
+
     
 }
